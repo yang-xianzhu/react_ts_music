@@ -1,16 +1,9 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import { useRoutes } from 'react-router-dom'
 import './App.css'
-import { Button } from 'antd'
+import routes from './router'
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <div className="App">
-      <Button type="primary">antd</Button>
-    </div>
-  )
+  return <div className="App">{useRoutes(routes)}</div>
 }
 
 export default App
