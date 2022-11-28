@@ -1,5 +1,6 @@
 import { RouteObject } from 'react-router-dom'
 import { Discover } from '@/views/discover/index'
+import Mine from '@/views/mine'
 
 const routes: RouteObject[] = [
   {
@@ -9,6 +10,10 @@ const routes: RouteObject[] = [
   {
     path: '/discover',
     element: <Discover />
+  },
+  {
+    path: '/mine',
+    element: <Mine />
   }
 ]
 

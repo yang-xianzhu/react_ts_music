@@ -1,9 +1,12 @@
-import { useRoutes } from 'react-router-dom'
 import './App.css'
-import routes from './router'
+import Layout from '@/views/layout'
 
 function App() {
-  return <div className="App">{useRoutes(routes)}</div>
+  return (
+    <div className="App">
+      <Layout />
+    </div>
+  )
 }
 
 export default App

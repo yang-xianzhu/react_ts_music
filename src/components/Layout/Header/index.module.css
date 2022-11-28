@@ -1,0 +1,75 @@
+.m-top {
+  position: relative;
+  height: 70px;
+  background: #242424;
+  border-bottom: 1px solid #000;
+  z-index: 1000;
+}
+
+.logo {
+  width: 176px;
+  height: 70px;
+  background-position: 0 0;
+  background: url('@/assets/images/topbar.png') no-repeat;
+}
+
+.logo > a {
+  display: block;
+  width: 157px;
+  height: 70%;
+  padding-right: 20px;
+  text-indent: -9999px;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  height: 100%;
+}
+
+.item {
+  padding: 0 19px;
+  height: 70px;
+  line-height: 70px;
+  color: #ccc;
+
+  cursor: pointer;
+}
+
+.current_item {
+  color: #fff;
+  background: #000;
+}
+
+.item:hover {
+  color: #fff;
+
+  background: #000;
+}
+
+.right-box {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+/* 创作者中心 */
+.creator {
+  margin: 0 12px;
+  width: 90px;
+  height: 32px;
+  font-size: 12px;
+  line-height: 32px;
+  text-align: center;
+  border: 1px solid #4f4f4f;
+  color: #ccc;
+  border-radius: 20px;
+}
+
+.creator:hover {
+  border-color: #fff;
+  color: #fff;
+}
