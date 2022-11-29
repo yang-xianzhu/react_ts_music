@@ -1,9 +1,12 @@
-function Mine() {
+import { memo } from 'react'
+
+const Focus = () => {
   return (
     <>
       <div style={{ backgroundColor: '#C20C0C', height: '5px' }}></div>
-      <div>Mine</div>
+      <div>关注</div>
     </>
   )
 }
-export default Mine
+
+export default memo(Focus)

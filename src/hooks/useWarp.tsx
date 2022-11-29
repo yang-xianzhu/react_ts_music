@@ -1,9 +1,14 @@
 import indexStyle from '@/assets/styles/index.module.css'
-import { ReactElement } from 'react'
-import { memo } from 'react'
+import { FC, ReactNode } from 'react'
 
-// 居中高阶组件
-function useWarp({ props: { children } }: any) {
+interface IProps {
+  props: {
+    children?: ReactNode
+  }
+}
+
+// 居中-高阶组件
+const useWarp: FC<IProps> = ({ props: { children } }) => {
   return <div className={indexStyle.warp}>{children}</div>
 }
 

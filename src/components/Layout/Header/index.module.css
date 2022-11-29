@@ -37,13 +37,24 @@
 }
 
 .current_item {
+  position: relative;
   color: #fff;
   background: #000;
 }
 
+.current_item::after {
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  transform: translateX(-50%) rotate(45deg);
+  content: '';
+  border-color: #c20c0c transparent transparent #c20c0c;
+  border-width: 5px;
+  border-style: solid;
+}
+
 .item:hover {
   color: #fff;
-
   background: #000;
 }
 

@@ -3,10 +3,11 @@
   line-height: 70px;
 }
 .search {
-  padding-left: 12px;
-  width: 158px;
-  height: 32px;
-  color: #9b9b9b;
+  padding-left: 14px;
+  width: 191px;
+  height: 42px;
+  color: #000;
   font-style: 10px;
-  border-radius: 16px;
+  border-radius: 18px;
+  transform: scale(0.8);
 }

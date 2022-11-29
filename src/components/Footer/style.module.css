@@ -1,0 +1,7 @@
+.footer {
+  position: relative;
+  height: 325px;
+  overflow: hidden;
+  border-top: 1px solid rgb(211, 211, 211);
+  background: rgb(242, 242, 242);
+}
