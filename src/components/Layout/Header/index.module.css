@@ -4,6 +4,15 @@
   background: #242424;
   border-bottom: 1px solid #000;
   z-index: 1000;
+  /* 禁止选中文本 */
+  /* 火狐 */
+  -moz-user-select: none;
+  /* Safari 和 欧朋 */
+  -webkit-user-select: none;
+  /* IE10+ and Edge */
+  -ms-user-select: none;
+  /* Standard syntax 标准语法(谷歌) */
+  user-select: none;
 }
 
 .logo {
@@ -56,6 +65,22 @@
 .item:hover {
   color: #fff;
   background: #000;
+}
+
+.last-item {
+  position: relative;
+}
+
+/* hot图标 */
+.hot {
+  display: block;
+  position: absolute;
+  top: 21px;
+  left: 100px;
+  width: 28px;
+  height: 19px;
+  /* background-position: -190px 0; */
+  background: url(@/assets/images/topbar.png) no-repeat -190px 0;
 }
 
 .right-box {

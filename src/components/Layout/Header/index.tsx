@@ -58,10 +58,13 @@ function Header() {
                 }}
                 key={v.text}
                 className={`${classObj.item} ${
-                  pathname === v.href && classObj.current_item
-                }`}
+                  pathname.includes(v.href) && classObj.current_item
+                } ${v.text === '下载客户端' && classObj['last-item']}`}
               >
                 {v.text}
+                {v.text === '下载客户端' && (
+                  <span className={classObj.hot}></span>
+                )}
               </li>
             ))}
           </ul>

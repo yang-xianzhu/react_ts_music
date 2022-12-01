@@ -1,0 +1,15 @@
+/* 轮播图动画 */
+.banner-img-enter {
+  opacity: 0.2;
+}
+.banner-img-enter-active {
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+.banner-img-exit {
+  opacity: 1;
+}
+.banner-img-exit-active {
+  opacity: 0.2;
+  transition: opacity 1s ease-out;
+}

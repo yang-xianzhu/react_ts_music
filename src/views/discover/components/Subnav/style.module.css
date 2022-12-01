@@ -26,3 +26,7 @@
 .nav > li:hover > span {
   background: #9b0909;
 }
+
+.current-item {
+  background: #9b0909;
+}

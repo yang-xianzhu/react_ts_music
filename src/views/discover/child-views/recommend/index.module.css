@@ -1,0 +1,78 @@
+.banner-container {
+  display: flex;
+}
+
+.btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 37px;
+  height: 63px;
+  background-color: transparent;
+  transition: background-color 0.4s ease;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.banl {
+  left: 0;
+}
+
+.banl::after,
+.banr::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-color: #ededed transparent transparent #ededed;
+  border-width: 2px;
+  border-style: solid;
+}
+
+.banl::after {
+  left: 42%;
+  top: 50%;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+.banr {
+  right: -50px;
+}
+
+.banr::after {
+  left: -6px;
+  top: 50%;
+  transform: translateY(-50%) rotate(135deg);
+}
+
+/* 小圆点 */
+.dots {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.dots > li {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ededed;
+  transition: background-color 0.4s ease;
+}
+
+.dots > li:hover {
+  background-color: #c20c0c;
+}
+.dots > li.current {
+  background-color: #c20c0c;
+}
+
+.dots > li:nth-child(n + 2) {
+  margin-left: 12px;
+}
