@@ -1,5 +1,5 @@
 import styleObj from './style.module.css'
-import indexStyle from '@/assets/styles/index.module.css'
+import indexStyle from '@/styles/index.module.css'
 
 const Footer = () => {
   return (

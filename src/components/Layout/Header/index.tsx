@@ -1,4 +1,4 @@
-import indexStyle from '@/assets/styles/index.module.css'
+import indexStyle from '@/styles/index.module.css'
 import classObj from './index.module.css'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { memo } from 'react'

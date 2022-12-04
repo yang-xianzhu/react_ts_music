@@ -1,0 +1,71 @@
+.m-cvrlst {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.m-cvrlst > li {
+  padding-bottom: 30px;
+}
+
+.m-cvrlst > li:nth-child(n + 2) {
+  padding-left: 40px;
+}
+
+.m-cvrlst > li:nth-child(4n + 1) {
+  padding-left: 0;
+}
+
+.cover {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  background-color: #eee;
+  cursor: pointer;
+}
+
+.cover .mark {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 27px;
+  padding: 0 12px;
+  background: rgba(0, 0, 0, 0.4);
+  color: #ccc;
+  cursor: default;
+}
+
+.mark > span {
+  display: block;
+}
+
+.mark .icon-headset {
+  width: 14px;
+  height: 11px;
+  background: url('@/assets/images/iconall.png') no-repeat 0 -24px;
+}
+
+.mark .play-text {
+  margin-left: 6px;
+  font-size: 12px;
+}
+
+.mark .play-icon {
+  position: absolute;
+  right: 12px;
+  width: 16px;
+  height: 17px;
+  background: url('@/assets/images/iconall.png') no-repeat 0 0;
+  cursor: pointer;
+}
+
+.mark .play-icon:hover {
+  background-position: 0 -59px;
+}
+
+/* 描述文本 */
+.m-cvrlst .dec {
+  cursor: pointer;
+}

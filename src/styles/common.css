@@ -1,0 +1,7 @@
+/* 文本溢出隐藏 需要有width */
+.f-thide {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+}

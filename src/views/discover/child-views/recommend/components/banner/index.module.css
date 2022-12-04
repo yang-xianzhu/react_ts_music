@@ -40,7 +40,7 @@
 }
 
 .banr {
-  right: -50px;
+  right: -10px;
 }
 
 .banr::after {
@@ -51,11 +51,11 @@
 
 /* 小圆点 */
 .dots {
+  display: flex;
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  display: flex;
 }
 
 .dots > li {
@@ -75,4 +75,41 @@
 
 .dots > li:nth-child(n + 2) {
   margin-left: 12px;
+}
+
+/* 右侧下载部分 */
+.download {
+  position: relative;
+  display: block;
+  height: 100%;
+  width: 254px;
+}
+
+.download,
+.download > span {
+  background: url('@/assets/images/download.png') no-repeat;
+}
+
+.download > p {
+  position: absolute;
+  bottom: 4px;
+  left: 6px;
+  color: #eee;
+  font-size: 12px;
+}
+
+.download > span {
+  position: absolute;
+  left: 18px;
+  bottom: 43px;
+  display: block;
+  width: 215px;
+  height: 56px;
+  cursor: pointer;
+  background-position: -18px -186px;
+  text-indent: -9999px;
+}
+
+.download > span:hover {
+  background-position: 0 -9999px;
 }

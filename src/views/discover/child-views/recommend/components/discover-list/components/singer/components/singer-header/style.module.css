@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 6px;
+  font-size: 12px;
+  border-bottom: 1px solid #999;
+}
+
+.header > span {
+  color: #666;
+  cursor: pointer;
+}
+
+.header > span:hover {
+  text-decoration: underline;
+}

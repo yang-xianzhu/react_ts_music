@@ -1,0 +1,20 @@
+.warp {
+  width: 983px;
+  margin: 0 auto;
+}
+
+.discoverList-container {
+  display: flex;
+}
+
+.discoverList-container > .discoverList-left {
+  flex: 1;
+  border-left: 1px solid #d3d3d3;
+  /* border-right: 1px solid #d3d3d3; */
+}
+
+.discoverList-container > .discoverList-right {
+  width: 254px;
+  border-left: 1px solid #d3d3d3;
+  border-right: 1px solid #d3d3d3;
+}

@@ -1,0 +1,95 @@
+.header {
+  position: relative;
+  height: 33px;
+  padding: 0 10px 0 34px;
+  border-bottom: 2px solid #c10d0c;
+}
+
+.dot {
+  position: absolute;
+  left: 4px;
+  top: -4px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #c10d0c;
+}
+
+.dot::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+}
+.header,
+.header > ul {
+  display: flex;
+  align-items: center;
+}
+.header > ul {
+  margin-left: 20px;
+  font-size: 12px;
+}
+
+.header > p {
+  font-size: 20px;
+}
+
+.header > ul li {
+  border-bottom: 1px solid transparent;
+  transition: border 0.4s ease;
+}
+.header > ul li:hover {
+  border-bottom: 1px solid #333;
+}
+
+.header > ul li:nth-child(n + 2) {
+  position: relative;
+  margin-left: 24px;
+}
+
+.header > ul li:nth-child(n + 2)::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -12px;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 10px;
+  background-color: #999;
+}
+
+.header > ul li > span {
+  cursor: pointer;
+}
+
+/* 更多 */
+.header > span {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+}
+
+.header > span:hover {
+  border-bottom: 1px solid #333;
+}
+
+/* 更多的小图标 */
+.more-icon {
+  position: absolute;
+  right: -14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background: url('@/assets/images/sprite.png') no-repeat 0 -240px;
+  background-color: #f2f1f2;
+}

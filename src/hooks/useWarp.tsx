@@ -1,4 +1,4 @@
-import indexStyle from '@/assets/styles/index.module.css'
+import indexStyle from '@/styles/index.module.css'
 import { FC, ReactNode } from 'react'
 
 interface IProps {

@@ -1,6 +1,6 @@
 import { memo } from 'react'
 function Home() {
-  return 123
+  return <div>Home</div>
 }
 
 export default memo(Home)
