@@ -1,0 +1,20 @@
+.hot-host-container > li {
+  display: flex;
+  height: 50px;
+  font-size: 12px;
+}
+
+.hot-host-container > li img {
+  width: 40px;
+  height: 40px;
+}
+
+.dec-box {
+  width: 160px;
+  height: 100%;
+  margin-left: 8px;
+}
+
+.dec-box > p {
+  margin-bottom: 6px;
+}

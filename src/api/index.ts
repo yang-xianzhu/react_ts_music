@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { BASE_URL, TIME_OUT } from './config'
+
 // 创建实例时配置默认值
 const request = axios.create({
   baseURL: BASE_URL,

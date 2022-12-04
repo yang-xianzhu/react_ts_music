@@ -24,7 +24,7 @@ const DiscoverList = () => {
           <div className={discoverListStyle['discoverList-right']}>
             {/* 用户登录 */}
             <MyInfo />
-            {/* 入驻歌手 */}
+            {/* 入驻歌手/热门主播 */}
             <Singer />
           </div>
         </div>

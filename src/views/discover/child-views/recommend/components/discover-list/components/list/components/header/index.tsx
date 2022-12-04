@@ -1,7 +1,8 @@
-import { memo } from 'react'
+import { memo, FC } from 'react'
 import type { IHeaderInfo } from './type'
 import headerStyle from './style.module.css'
-function Header(props: IHeaderInfo) {
+
+const Header: FC<IHeaderInfo> = (props) => {
   const { infos } = props
   return (
     <>

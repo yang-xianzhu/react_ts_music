@@ -3,7 +3,7 @@ import classObj from './index.module.css'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { memo } from 'react'
 import Search from '@/components/Search'
-import Login from './Login'
+import Login from './Login/Login'
 import type { IList } from './index.d'
 
 const list: IList[] = [

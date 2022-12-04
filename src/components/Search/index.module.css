@@ -1,13 +1,26 @@
 .search-box {
+  position: relative;
   height: 100%;
   line-height: 70px;
 }
+
 .search {
-  padding-left: 14px;
+  padding-left: 36px;
   width: 191px;
   height: 42px;
   color: #000;
   font-style: 10px;
   border-radius: 21px;
   transform: scale(0.8);
+}
+
+.search-icon {
+  position: absolute;
+  left: 26px;
+  top: 49%;
+  transform: translateY(-50%);
+  width: 25px;
+  height: 25px;
+  background: url('@/assets/images/topbar.png') no-repeat -5px -101px;
+  z-index: 3;
 }

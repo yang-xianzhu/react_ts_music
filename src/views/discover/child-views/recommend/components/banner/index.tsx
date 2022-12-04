@@ -5,7 +5,7 @@ import bannerStyle from './index.module.css'
 import { CSSTransition } from 'react-transition-group'
 import type { TBanner } from './type'
 import './transition.css'
-import { getBannerList } from '@/api/banner'
+import { getBannerList } from '@/api/recommend'
 
 function Banner() {
   const push = useNavigate()

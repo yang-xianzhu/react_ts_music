@@ -1,7 +1,8 @@
-import { memo } from 'react'
+import { memo, FC } from 'react'
 import type { ISingerHead } from './type'
 import SingerStyle from './style.module.css'
-function SingerHeader(props: ISingerHead) {
+
+const SingerHeader: FC<ISingerHead> = (props) => {
   const { title, isShowRightTitle = true } = props
   return (
     <>

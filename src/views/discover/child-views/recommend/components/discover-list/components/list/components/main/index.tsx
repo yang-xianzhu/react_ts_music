@@ -1,28 +1,39 @@
-import { memo } from 'react'
+import { memo, useEffect, useState } from 'react'
 import mainStyle from './style.module.css'
-
-const arr = new Array(10).fill(1)
+import { getPersonalized } from '@/api/recommend'
 
 function ListMain() {
+  const [list, setList] = useState([])
+
+  useEffect(() => {
+    getPersonalized().then((res: any) => {
+      console.log(res)
+      setList(res.result?.slice(1, 9))
+    })
+  }, [])
   return (
     <>
-      <div style={{ marginTop: '30px' }}>
-        <ul className={mainStyle['m-cvrlst']}>
-          {arr.map((v, idx) => (
-            <li key={idx}>
-              <div className={mainStyle['cover']}>
-                <div className={mainStyle['mark']}>
-                  <span className={mainStyle['icon-headset']}></span>
-                  <span className={mainStyle['play-text']}>2833万</span>
-                  <span className={mainStyle['play-icon']}></span>
-                  <span></span>
+      {list.length && (
+        <div style={{ marginTop: '30px' }}>
+          <ul className={mainStyle['m-cvrlst']}>
+            {list.map((v: any) => (
+              <li key={v.id}>
+                <div className={mainStyle['cover']}>
+                  <img src={v.picUrl} alt="" />
+                  <div className={mainStyle['mark']}>
+                    <span className={mainStyle['icon-headset']}></span>
+                    <span className={mainStyle['play-text']}>
+                      {v.playCount}
+                    </span>
+                    <span className={mainStyle['play-icon']}></span>
+                  </div>
                 </div>
-              </div>
-              <p className={mainStyle['dec']}>文本</p>
-            </li>
-          ))}
-        </ul>
-      </div>
+                <p className={`${mainStyle['dec']} f-thide`}>{v.name}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </>
   )
 }

@@ -2,7 +2,7 @@
   width: 250px;
   height: 126px;
   padding: 16px 18px;
-  background: url('@/assets/images/sprite.png');
+  background: url('@/assets/images/sprite.png') no-repeat;
 }
 
 .my-info > p {

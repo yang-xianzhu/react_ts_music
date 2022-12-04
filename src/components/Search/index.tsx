@@ -6,6 +6,7 @@ const Search = () => {
   const ipt = useRef<HTMLInputElement | null>(null)
   return (
     <div className={cssObj['search-box']}>
+      <i className={cssObj['search-icon']}></i>
       <input
         type="text"
         className={cssObj.search}
