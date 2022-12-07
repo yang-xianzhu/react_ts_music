@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import indexStyle from '@/styles/index.module.css'
 import bannerStyle from './index.module.css'
 import { CSSTransition } from 'react-transition-group'
-import type { TBanner } from './type'
+import type { TBanner, TBannerChange } from './type'
 import './transition.css'
 import { getBannerList } from '@/api/recommend'
 
@@ -22,7 +22,7 @@ function Banner() {
   }, [])
 
   // 上下切换
-  const handleBanner = (num: number, type: string) => {
+  const handleBanner = (num: number, type: TBannerChange) => {
     setCurrentBanner((idx: number) => {
       setIsFlag(true)
       Promise.resolve().then(() => {

@@ -8,8 +8,9 @@ export const getBannerList = () =>
   })
 
 // 热门推荐
-export const getPersonalized = () =>
+export const getPersonalized = (params: any) =>
   request({
     method: 'get',
-    url: '/personalized'
+    url: '/personalized',
+    params
   })

@@ -10,6 +10,7 @@
   align-items: center;
   color: #fff;
   padding-left: 185px;
+  height: 36px;
 }
 
 .nav > li {
@@ -19,10 +20,12 @@
 }
 .nav > li > span {
   display: block;
-  line-height: 35px;
   padding: 0 13px;
   border-radius: 10px;
+  height: 22px;
+  line-height: 22px;
 }
+
 .nav > li:hover > span {
   background: #9b0909;
 }

@@ -5,3 +5,16 @@
   white-space: nowrap;
   word-wrap: normal;
 }
+
+.small-text-size {
+  font-size: 12px;
+}
+
+/* 雪碧图片类 */
+.yxz-sprite {
+  background: url('@/assets/images/sprite.png') no-repeat 0 -99999px;
+}
+
+.yxz-coverall {
+  background: url('@/assets/images/coverall.png') no-repeat 0 -99999px;
+}

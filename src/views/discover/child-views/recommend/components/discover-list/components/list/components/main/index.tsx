@@ -1,34 +1,39 @@
 import { memo, useEffect, useState } from 'react'
 import mainStyle from './style.module.css'
 import { getPersonalized } from '@/api/recommend'
+import { numberTransition, transitionSamllImg } from '@/utils'
+import type { TList } from './type'
 
 function ListMain() {
-  const [list, setList] = useState([])
+  const [list, setList] = useState<TList[]>([])
 
   useEffect(() => {
-    getPersonalized().then((res: any) => {
-      console.log(res)
-      setList(res.result?.slice(1, 9))
+    getPersonalized({
+      limit: 8
+    }).then((res: any) => {
+      setList(res.result)
     })
   }, [])
   return (
     <>
-      {list.length && (
+      {list.length > 0 && (
         <div style={{ marginTop: '30px' }}>
           <ul className={mainStyle['m-cvrlst']}>
-            {list.map((v: any) => (
+            {list.map((v: TList) => (
               <li key={v.id}>
                 <div className={mainStyle['cover']}>
-                  <img src={v.picUrl} alt="" />
+                  <a href="#" title={v.name} className={mainStyle['msk']}></a>
+                  <img src={transitionSamllImg(v.picUrl, 140, 140)} alt="" />
                   <div className={mainStyle['mark']}>
                     <span className={mainStyle['icon-headset']}></span>
+                    {/* 播放次数 */}
                     <span className={mainStyle['play-text']}>
-                      {v.playCount}
+                      {numberTransition(v.playCount)}
                     </span>
                     <span className={mainStyle['play-icon']}></span>
                   </div>
                 </div>
-                <p className={`${mainStyle['dec']} f-thide`}>{v.name}</p>
+                <p className={`${mainStyle['dec']}`}>{v.name}</p>
               </li>
             ))}
           </ul>

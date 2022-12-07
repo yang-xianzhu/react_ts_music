@@ -28,6 +28,17 @@
   height: 100%;
 }
 
+.cover > .msk {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: url('@/assets/images/coverall.png') no-repeat 0 0;
+  z-index: 9;
+}
+
 .cover .mark {
   display: flex;
   align-items: center;
@@ -53,6 +64,7 @@
 }
 
 .mark .play-text {
+  color: #fff;
   margin-left: 6px;
   font-size: 12px;
 }
@@ -73,6 +85,10 @@
 /* 描述文本 */
 .m-cvrlst .dec {
   margin-top: 14px;
-  width: 120px;
+  width: 140px;
   cursor: pointer;
+}
+
+.m-cvrlst .dec:hover {
+  text-decoration: underline;
 }

@@ -27,3 +27,5 @@ export interface TBanner {
   scm: string
   bannerBizType: string
 }
+
+export type TBannerChange = 'add' | 'reduce'

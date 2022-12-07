@@ -3,6 +3,7 @@ import discoverListStyle from './style.module.css'
 import MyInfo from './components/myinfo'
 import Singer from './components/singer'
 import List from './components/list'
+import Newdisc from './components/newdisc'
 const DiscoverList = () => {
   return (
     <>
@@ -17,7 +18,10 @@ const DiscoverList = () => {
                 padding: `20px 20px 40px`
               }}
             >
+              {/* 热门推荐 */}
               <List />
+              {/* 新碟上架 */}
+              <Newdisc />
             </div>
             {/* 热门推荐 */}
           </div>
