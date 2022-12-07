@@ -7,15 +7,24 @@ export const numberTransition = (
   if (str.length < 5) {
     return str
   }
+
+  // if (str.length > 5) {
+  //   return str
+  // }
   //大于8位数是亿
   else if (str.length > 8) {
     let decimal = str.substring(str.length - 8, str.length - 8 + point)
-    return parseFloat(parseInt(numStr / 100000000) + '.' + decimal) + '亿'
+    return (
+      parseFloat(parseInt(Number(numStr) / 100000000 + '') + '.' + decimal) +
+      '亿'
+    )
   }
   //大于5位数是一万 (以1W分割 1W以下全部显示)
   else if (str.length > 4) {
     let decimal = str.substring(str.length - 4, str.length - 4 + point)
-    return parseFloat(parseInt(numStr / 10000) + '.' + decimal) + '万'
+    return (
+      parseFloat(parseInt(Number(numStr) / 10000 + '') + '.' + decimal) + '万'
+    )
   }
   return str
 }
