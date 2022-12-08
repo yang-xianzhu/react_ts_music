@@ -26,11 +26,13 @@
   transform: translate(-50%, -50%);
   background-color: #fff;
 }
+
 .header,
 .header > ul {
   display: flex;
   align-items: center;
 }
+
 .header > ul {
   margin-left: 20px;
   font-size: 12px;
@@ -38,6 +40,7 @@
 
 .header > p {
   font-size: 20px;
+  margin-bottom: 0.8em;
 }
 
 .header > ul li {

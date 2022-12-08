@@ -4,34 +4,27 @@ import Style from './style.module.css'
 import { TChangType, IList } from './type'
 import { transitionSamllImg } from '@/utils'
 
-const arr = new Array(5).fill(1)
 const RunHorse = () => {
   const [currentNum, setCurrentNum] = useState(0)
-  const [left, setLeft] = useState(25)
+  const [left, setLeft] = useState(26)
   // 存储list数据
   const [list, setList] = useState<IList[]>([])
 
   useEffect(() => {
     getAlbumList({
-      limit: 15
+      limit: 10
     }).then((res: any) => {
-      //   console.log('res', res)
-      const n1 = res.products.slice(0, 5)
-      const n2 = res.products.slice(5, 10)
-      const n3 = res.products.slice(10, 15)
-      setList([n1, n2, n3])
+      const list = res.albums
+      const n1 = list.slice(0, 5)
+      const n2 = list.slice(5, 10)
+      setList([n1, n2])
     })
   }, [])
-
-  useEffect(() => {
-    console.log('left', left)
-  }, [left])
 
   // 左右切换
   const handleClick = (type: TChangType) => {
     if (type === 'right') {
       if (currentNum >= list.length - 1) {
-        console.log('@@')
         return
       }
       setCurrentNum((current) => {
@@ -40,7 +33,6 @@ const RunHorse = () => {
       setLeft(left - 660)
     } else {
       if (currentNum <= 0) {
-        console.log('@@')
         return
       }
       setCurrentNum((current) => {
@@ -53,16 +45,18 @@ const RunHorse = () => {
   return (
     <>
       <div className={Style['runhorse-main']}>
-        {
+        {!(currentNum <= 0) && (
           <span
             className={`yxz-sprite ${Style['btn']} ${Style['btnl']}`}
             onClick={() => handleClick('left')}
           ></span>
-        }
-        <span
-          className={`yxz-sprite ${Style['btn']} ${Style['btnr']}`}
-          onClick={() => handleClick('right')}
-        ></span>
+        )}
+        {!(currentNum >= list.length - 1) && (
+          <span
+            className={`yxz-sprite ${Style['btn']} ${Style['btnr']}`}
+            onClick={() => handleClick('right')}
+          ></span>
+        )}
         <div className={Style['inner']}>
           {list.length > 0 &&
             list.map((item: any, idx: number) => (
@@ -74,17 +68,17 @@ const RunHorse = () => {
                 key={idx}
               >
                 {item.map((v: IList) => (
-                  <li key={v.albumId} className="yxz-coverall">
+                  <li key={v.id} className="yxz-coverall">
                     <div className={Style['item-box']}>
                       <img
-                        src={transitionSamllImg(v.coverUrl, 100, 100)}
+                        src={transitionSamllImg(v.blurPicUrl, 100, 100)}
                         alt=""
                       />
                       <p className={`f-thide ${Style['song-name']}`}>
-                        {v.albumName}
+                        {v.name}
                       </p>
                       <p className={`f-thide ${Style['singer-name']}`}>
-                        {v.artistName}
+                        {v.artist.name}
                       </p>
                     </div>
                   </li>

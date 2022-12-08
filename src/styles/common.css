@@ -1,3 +1,12 @@
+.warp {
+  width: 1100px;
+  margin: 0 auto;
+}
+
+.mini-warp {
+  width: 980px;
+  margin: 0 auto;
+}
 /* 文本溢出隐藏 需要有width */
 .f-thide {
   overflow: hidden;
@@ -17,4 +26,9 @@
 
 .yxz-coverall {
   background: url('@/assets/images/coverall.png') no-repeat 0 -99999px;
+}
+
+.foot-img {
+  background: url('@/assets/images/foot_enter.png') no-repeat 0 -99999px;
+  background-size: 220px 220px;
 }

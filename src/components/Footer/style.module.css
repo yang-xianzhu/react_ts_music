@@ -4,4 +4,115 @@
   overflow: hidden;
   border-top: 1px solid rgb(211, 211, 211);
   background: rgb(242, 242, 242);
+  color: #666;
+  font-size: 12px;
+}
+
+.footer ul {
+  display: flex;
+  align-items: center;
+}
+
+.footer-list {
+  justify-content: space-around;
+  margin-top: 45px;
+}
+
+.footer-list > li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-list > li .item {
+  display: block;
+  width: 45px;
+  height: 45px;
+}
+
+.footer-list > li:nth-child(1) .item {
+  background-position: -170px -5px;
+}
+
+.footer-list > li:nth-child(2) .item {
+  background-position: -5px -170px;
+}
+
+.footer-list > li:nth-child(3) .item {
+  background-position: -5px -60px;
+}
+
+.footer-list > li:nth-child(4) .item {
+  background-position: -60px -60px;
+}
+
+.footer-list > li:nth-child(5) .item {
+  background-position: -115px -115px;
+}
+
+.footer-list > li:nth-child(6) .item {
+  background-position: -170px -115px;
+}
+
+.footer-list > li:nth-child(7) .item {
+  background-position: -170px -60px;
+}
+
+.footer-list > li:nth-child(1):hover .item {
+  background-position: -5px -115px;
+}
+
+.footer-list > li:nth-child(2):hover .item {
+  background-position: -60px -170px;
+}
+
+.footer-list > li:nth-child(3):hover .item {
+  background-position: -60px -5px;
+}
+
+.footer-list > li:nth-child(4):hover .item {
+  background-position: -115px -5px;
+}
+
+.footer-list > li:nth-child(5):hover .item {
+  background-position: -5px -5px;
+}
+
+.footer-list > li:nth-child(6):hover .item {
+  background-position: -60px -115px;
+}
+
+.footer-list > li:nth-child(7):hover .item {
+  background-position: -115px -60px;
+}
+
+.footer-list > li .text {
+  margin-top: 14px;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+}
+
+/* 条约list */
+.treaty-list {
+  justify-content: center;
+}
+
+.treaty-list > li:nth-child(n + 2) {
+  position: relative;
+  margin-left: 24px;
+}
+
+.treaty-list > li:nth-child(n + 2)::before {
+  content: '';
+  position: absolute;
+  left: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 10px;
+  width: 1px;
+  background: #d9d9d9;
+}
+
+.treaty-list > li:hover > a {
+  text-decoration: underline;
 }
