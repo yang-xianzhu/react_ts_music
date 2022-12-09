@@ -4,6 +4,7 @@ import MyInfo from './components/myinfo'
 import Singer from './components/singer'
 import List from './components/list'
 import Newdisc from './components/newdisc'
+import Leaderboard from './components/leaderboard'
 const DiscoverList = () => {
   return (
     <>
@@ -22,8 +23,9 @@ const DiscoverList = () => {
               <List />
               {/* 新碟上架 */}
               <Newdisc />
+              {/* 榜单 */}
+              <Leaderboard />
             </div>
-            {/* 热门推荐 */}
           </div>
           <div className={discoverListStyle['discoverList-right']}>
             {/* 用户登录 */}

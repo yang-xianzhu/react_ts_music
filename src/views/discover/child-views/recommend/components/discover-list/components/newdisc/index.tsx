@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import Header from '../list/components/header'
+import Header from '../../components/header'
 import Runhorse from './components/runhorse'
 const NewDisc = () => {
   return (

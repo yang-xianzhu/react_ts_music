@@ -28,6 +28,10 @@
   background: url('@/assets/images/coverall.png') no-repeat 0 -99999px;
 }
 
+.yxz-icon {
+  background: url('@/assets/images/icon.png') no-repeat 0 -99999px;
+}
+
 .foot-img {
   background: url('@/assets/images/foot_enter.png') no-repeat 0 -99999px;
   background-size: 220px 220px;

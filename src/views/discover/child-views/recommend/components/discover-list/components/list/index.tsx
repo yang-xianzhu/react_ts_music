@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import Header from './components/header'
+import Header from '../../components/header'
 import ListMain from './components/main'
 
 const itemInfo = {
