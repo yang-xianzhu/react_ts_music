@@ -1,4 +1,5 @@
 import request from '@/api'
+import { ITopListDetail } from './type'
 
 // 轮播图数据
 export const getBannerList = () =>
@@ -13,4 +14,11 @@ export const getPersonalized = (params: any) =>
     method: 'get',
     url: '/personalized',
     params
+  })
+
+// 榜单
+export const getTopListDetail = (params: ITopListDetail) =>
+  request({
+    method: 'get',
+    url: `/playlist/detail?id=${params.id}`
   })

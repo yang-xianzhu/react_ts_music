@@ -39,6 +39,7 @@
 
 .cver > img {
   width: 100%;
+  box-shadow: 0 9px 14px #999;
 }
 
 .cver > a {
@@ -126,6 +127,7 @@
   right: 10px;
   transform: translateY(-50%);
   display: flex;
+  z-index: 9;
 }
 
 .oper a {

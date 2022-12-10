@@ -1,0 +1,54 @@
+export interface IPlaylist {
+  id: number
+  name: string
+  coverImgId: number
+  coverImgUrl: string
+  coverImgId_str: string
+  adType: number
+  userId: number
+  createTime: number
+  status: number
+  opRecommend: boolean
+  highQuality: boolean
+  newImported: boolean
+  updateTime: number
+  trackCount: number
+  specialType: number
+  privacy: number
+  trackUpdateTime: number
+  commentThreadId: string
+  playCount: number
+  trackNumberUpdateTime: number
+  subscribedCount: number
+  cloudTrackCount: number
+  ordered: boolean
+  description: string
+  tags: any[]
+  updateFrequency: any
+  backgroundCoverId: number
+  backgroundCoverUrl: any
+  titleImage: number
+  titleImageUrl: any
+  englishTitle: any
+  officialPlaylistType: any
+  copied: boolean
+  subscribers: any[]
+  subscribed: boolean
+  creator: Creator
+  tracks: any[]
+  videoIds: any
+  videos: any
+  trackIds: any[]
+  bannedTrackIds: any
+  shareCount: number
+  commentCount: number
+  remixVideo: any
+  sharedUsers: any
+  historySharedUsers: any
+  gradeStatus: string
+  score: any
+  algTags: any
+  ToplistType: string
+}
+
+export interface Creator {}
