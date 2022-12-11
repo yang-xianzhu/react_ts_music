@@ -34,4 +34,17 @@ export const transitionSamllImg = (
   url: string,
   width: number,
   height: number
-): string => `${url}?param=${width}x${height}`
+): string => `${url}?param=${width}y${height}`
+
+// 格式化时间  2000000 ---> 04:13
+export const transitionTimer = (time: number) => {
+  const timeSeconds = time / 1000
+  const minute = Math.floor(timeSeconds / 60)
+  const second = Math.floor(timeSeconds) % 60
+
+  // 补0操作
+  const formatMinute = String(minute).padStart(2, '0')
+  const formatSecond = String(second).padStart(2, '0')
+
+  return `${formatMinute}:${formatSecond}`
+}

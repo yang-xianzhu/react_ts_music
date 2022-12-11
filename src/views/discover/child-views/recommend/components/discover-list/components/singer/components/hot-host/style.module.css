@@ -7,14 +7,27 @@
 .hot-host-container > li img {
   width: 40px;
   height: 40px;
+  cursor: pointer;
 }
 
 .dec-box {
+  display: flex;
+  flex-direction: column;
   width: 160px;
   height: 100%;
   margin-left: 8px;
+  padding: 4px 0;
+  font-size: 12px;
 }
 
-.dec-box > p {
+.dec-box > a {
   margin-bottom: 6px;
+}
+
+.dec-box > a:hover {
+  text-decoration: underline;
+}
+
+.dec-box > span {
+  color: #666;
 }

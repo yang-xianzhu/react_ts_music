@@ -1,0 +1,37 @@
+/* 左侧播放按钮组 */
+.btns {
+  display: flex;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.btns > span {
+  display: block;
+  width: 28px;
+  height: 28px;
+  text-indent: -99999px;
+  cursor: pointer;
+}
+
+.btns > span:nth-child(1) {
+  background-position: 0 -130px;
+}
+
+.btns > span:nth-child(1):hover {
+  background-position: -30px -130px;
+}
+
+.btns > span:nth-child(2) {
+  margin: 0 8px;
+  width: 36px;
+  height: 36px;
+  background-position: 0 -204px;
+}
+
+.btns > span:nth-child(3) {
+  background-position: -80px -130px;
+}
+
+.btns > span:nth-child(3):hover {
+  background-position: -110px -130px;
+}

@@ -1,23 +1,38 @@
-import { memo } from 'react'
+import { memo, useEffect, useState } from 'react'
 import SingerHeader from '../singer-header'
 import type { ISingerHead } from '../singer-header/type'
 import HotHostStyle from './style.module.css'
+import { getHoterList } from '@/api/recommend'
+import type { IHotHost } from './type'
+import { transitionSamllImg } from '@/utils'
 const info: ISingerHead = {
   title: '热门主播',
   isShowRightTitle: false
 }
-const arr = [1, 1, 1, 1]
 function HotHost() {
+  const [list, setList] = useState<IHotHost[]>([])
+  useEffect(() => {
+    getHoterList({
+      type: 'new',
+      limit: 17
+    }).then(({ toplist }: any) => {
+      setList(toplist)
+    })
+  }, [])
   return (
     <>
       <SingerHeader {...info} />
       <ul className={HotHostStyle['hot-host-container']}>
-        {arr.map((_, idx: number) => (
+        {list.map((v: IHotHost, idx: number) => (
           <li key={idx}>
-            <img src="" alt="" />
+            <img
+              src={transitionSamllImg(v.picUrl, 40, 40)}
+              alt={v.name}
+              title={v.name}
+            />
             <div className={`${HotHostStyle['dec-box']} f-thide`}>
-              <p>陈立</p>
-              <span>歌手、播客节目《维维道来》主理人</span>
+              <a href="#/">{v.name}</a>
+              {v.rcmdtext && <span>{v.rcmdtext}</span>}
             </div>
           </li>
         ))}

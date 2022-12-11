@@ -7,6 +7,7 @@
   width: 980px;
   margin: 0 auto;
 }
+
 /* 文本溢出隐藏 需要有width */
 .f-thide {
   overflow: hidden;
@@ -32,7 +33,55 @@
   background: url('@/assets/images/icon.png') no-repeat 0 -99999px;
 }
 
+.yxz-playbar {
+  background: url('@/assets/images/playbar.png') no-repeat 0 -99999px;
+}
+
+.yxz-startbar {
+  background: url('@/assets/images/statbar.png') no-repeat 0 -99999px;
+}
+
+.yxz-iconall {
+  background: url('@/assets/images/iconall.png') no-repeat 0 -99999px;
+}
+
 .foot-img {
   background: url('@/assets/images/foot_enter.png') no-repeat 0 -99999px;
   background-size: 220px 220px;
+}
+
+/* playbar */
+.playbar-progress .ant-slider {
+  position: relative;
+  top: 0;
+  width: 493px;
+  margin: 0 10px 0 0;
+}
+
+.playbar-progress .ant-slider-rail {
+  height: 9px;
+  background: url('@/assets/images/statbar.png') no-repeat right 0;
+}
+
+.playbar-progress .ant-slider-track {
+  top: 4px;
+  height: 9px;
+  background: url('@/assets/images/statbar.png') no-repeat left -66px;
+}
+
+.playbar-progress .ant-slider-handle {
+  top: 3px;
+  width: 22px;
+  height: 24px;
+  border: none;
+  margin-top: -7px;
+  background: url('@/assets/images/iconall.png') no-repeat 0 -250px;
+}
+
+.playbar-progress .ant-slider-handle::before {
+  display: none;
+}
+
+.playbar-progress .ant-slider-handle::after {
+  display: none;
 }

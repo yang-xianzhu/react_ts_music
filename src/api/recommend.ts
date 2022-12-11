@@ -22,3 +22,19 @@ export const getTopListDetail = (params: ITopListDetail) =>
     method: 'get',
     url: `/playlist/detail?id=${params.id}`
   })
+
+// 入驻歌手
+export const getArtistList = (params: { limit: number }) =>
+  request({
+    method: 'get',
+    url: `/artist/list`,
+    params
+  })
+
+// 热门主播
+export const getHoterList = (params: { type: string; limit: number }) =>
+  request({
+    method: 'get',
+    url: `/dj/toplist`,
+    params
+  })

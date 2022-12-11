@@ -1,0 +1,63 @@
+.ctrl {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.ctrl > span {
+  display: block;
+  width: 25px;
+  height: 25px;
+  text-indent: -999999px;
+  cursor: pointer;
+}
+
+.ctrl .tip {
+  position: absolute;
+  top: -47px;
+  left: 0;
+  width: 81px;
+  height: 39px;
+  line-height: 34px;
+  text-align: center;
+  color: #fff;
+  font-size: 12px;
+  background-position: 0 -457px;
+}
+
+/* 播放列表 */
+.add {
+  display: flex;
+  align-items: center;
+  width: 59px;
+  height: 36px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.add > .icn-list {
+  display: block;
+  width: 38px;
+  padding-left: 21px;
+  background-position: -42px -68px;
+  height: 25px;
+  text-align: center;
+  color: #666;
+  text-shadow: 0 1px 0 #080707;
+}
+
+.add > .icn-list:hover {
+  background-position: -42px -98px;
+}
+
+.text {
+  display: block;
+  width: 22px;
+  height: 18px;
+  line-height: 18px;
+  background: #1d1d1d;
+  color: #666;
+  border-top-right-radius: 9px;
+  border-bottom-right-radius: 9px;
+}

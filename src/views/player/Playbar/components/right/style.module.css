@@ -1,0 +1,37 @@
+.right {
+  display: flex;
+  align-items: center;
+  margin: 6px 12px 0 12px;
+}
+
+.right > span {
+  display: block;
+  width: 25px;
+  height: 25px;
+  text-indent: -99999px;
+  cursor: pointer;
+}
+
+.icn-pip {
+  background: url('@/assets/images/icn-pip.png') no-repeat 0 0;
+}
+
+.icn-pip:hover {
+  background-position-y: -25px;
+}
+
+.right .like {
+  background-position: -88px -163px;
+}
+
+.right .like:hover {
+  background-position: -88px -189px;
+}
+
+.right .icn-share {
+  background-position: -114px -163px;
+}
+
+.right .icn-share:hover {
+  background-position: -114px -189px;
+}

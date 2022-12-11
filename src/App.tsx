@@ -1,9 +1,13 @@
 import Layout from '@/views/layout'
+import { Provider } from 'react-redux'
+import store from '@/store'
 
 function App() {
   return (
     <div className="App">
-      <Layout />
+      <Provider store={store}>
+        <Layout />
+      </Provider>
     </div>
   )
 }

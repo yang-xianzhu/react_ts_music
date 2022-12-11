@@ -5,9 +5,9 @@ import { getTopListDetail } from '@/api/recommend'
 import type { IPlaylist } from './type'
 import { transitionSamllImg } from '@/utils'
 
-const arr = new Array(10).fill(1)
 // 榜单id
 const listIDArr = [19723756, 3779629, 2884035]
+
 function Main() {
   const [list, setList] = useState<IPlaylist[]>([] as IPlaylist[])
 
@@ -21,6 +21,7 @@ function Main() {
       setList(res.map((v: any) => v.playlist))
     })
   }, [])
+
   return (
     <>
       {list.length > 0 && (
@@ -56,12 +57,7 @@ function Main() {
                   >
                     {item.name}
                   </Link>
-                  <div
-                    className={Style['oper-box']}
-                    // style={{
-                    //   background: ++idx % 2 === 0 ? '#f4f4f4' : '#e8e8e8'
-                    // }}
-                  >
+                  <div className={Style['oper-box']}>
                     <div className={Style['oper']}>
                       <Link to="/" className="yxz-sprite">
                         播放
