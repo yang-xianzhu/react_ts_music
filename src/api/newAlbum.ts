@@ -3,7 +3,7 @@ import type { TLimit } from './type'
 
 export const getAlbumList = (params: TLimit) => {
   return request({
-    url: '/album/newest',
+    url: '/api/album/newest',
     params
   })
 }
