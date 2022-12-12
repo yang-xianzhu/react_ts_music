@@ -8,7 +8,7 @@ interface IGetId {
 export const getCurrentSongUrl = (params: IGetId) =>
   request({
     method: 'get',
-    url: '/api/song/url',
+    url: '/song/url',
     params
   })
 
@@ -16,13 +16,13 @@ export const getCurrentSongUrl = (params: IGetId) =>
 export const getCurrentSongDetails = (params: IGetId) =>
   request({
     method: 'get',
-    url: '/api/song/detail',
+    url: '/song/detail',
     params
   })
 
 export function getSimiSong(params: IGetId) {
   return request({
-    url: '/api/simi/song',
+    url: '/simi/song',
     params
   })
 }
@@ -30,7 +30,7 @@ export function getSimiSong(params: IGetId) {
 // 获取歌词
 export function getLyric(params: IGetId) {
   return request({
-    url: '/api/lyric',
+    url: '/lyric',
     params
   })
 }

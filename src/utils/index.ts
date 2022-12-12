@@ -8,9 +8,6 @@ export const numberTransition = (
     return str
   }
 
-  // if (str.length > 5) {
-  //   return str
-  // }
   //大于8位数是亿
   else if (str.length > 8) {
     let decimal = str.substring(str.length - 8, str.length - 8 + point)

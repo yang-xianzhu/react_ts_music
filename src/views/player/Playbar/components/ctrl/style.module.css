@@ -61,3 +61,12 @@
   border-top-right-radius: 9px;
   border-bottom-right-radius: 9px;
 }
+
+.vol {
+  position: absolute;
+  top: -120px;
+  left: -3px;
+  width: 32px;
+  height: 116px;
+  background-position: 0 -503px !important;
+}

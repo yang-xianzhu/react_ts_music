@@ -1,18 +1,19 @@
-import { memo, useState, useRef, useEffect } from 'react'
+import { memo, useState, useRef, useEffect, FC } from 'react'
 import { useSelector } from 'react-redux'
 import Style from './style.module.css'
 import PlayBottom from './components/bottom'
 import Middle from './components/middle'
 import RightOpen from './components/right'
 import Ctrl from './components/ctrl'
+import Lock from './components/lock'
 import { getCurrentSongUrl } from '@/api/player'
 
-function Playbar() {
+const Playbar: FC = () => {
   // 获取当前播放歌曲信息
   const { currentSong } = useSelector((state: any) => state.player)
-  // 是否锁定playbar
+
+  // 是否锁住play状态
   const [isLock, setIsLock] = useState<boolean>(true)
-  const [position, setPosition] = useState<string>('-100px -380px')
   const [bottom, setBottom] = useState<string>('0')
 
   // 获取音频ref
@@ -41,34 +42,6 @@ function Playbar() {
   useEffect(() => {
     setDuration(currentSong.dt)
   }, [])
-
-  function hangleLock() {
-    setIsLock((current) => {
-      if (!current) {
-        setPosition('-100px -380px')
-      } else {
-        setPosition('-80px -400px')
-      }
-      return !current
-    })
-  }
-
-  // 锁住/解锁
-  function enterLock() {
-    if (isLock) {
-      setPosition('-100px -380px')
-    } else {
-      setPosition('-80px -400px')
-    }
-  }
-
-  function leaveLock() {
-    if (isLock) {
-      setPosition('-100px -380px')
-    } else {
-      setPosition('-80px -380px')
-    }
-  }
 
   // 切换播放状态
   function handlePlayState(playState: boolean, cb: () => void) {
@@ -147,20 +120,13 @@ function Playbar() {
           <Ctrl />
         </div>
         {/* 锁定解锁按钮 */}
-        <div className={`yxz-playbar ${Style['lock']}`}>
-          <span
-            className="yxz-playbar"
-            title={!isLock ? '锁定' : '解锁'}
-            style={{
-              backgroundPosition: position
-            }}
-            onClick={() => {
-              hangleLock()
-            }}
-            onMouseEnter={enterLock}
-            onMouseLeave={leaveLock}
-          ></span>
-        </div>
+        <Lock
+          {...{
+            getLockState: (state: boolean) => {
+              setIsLock(state)
+            }
+          }}
+        />
         {/* 歌曲音频 */}
         <audio
           ref={audioRef}

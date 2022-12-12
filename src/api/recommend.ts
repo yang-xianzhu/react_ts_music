@@ -5,14 +5,14 @@ import { ITopListDetail } from './type'
 export const getBannerList = () =>
   request({
     method: 'get',
-    url: '/api/banner'
+    url: '/banner'
   })
 
 // 热门推荐
 export const getPersonalized = (params: any) =>
   request({
     method: 'get',
-    url: '/api/personalized',
+    url: '/personalized',
     params
   })
 
@@ -20,14 +20,14 @@ export const getPersonalized = (params: any) =>
 export const getTopListDetail = (params: ITopListDetail) =>
   request({
     method: 'get',
-    url: `/api/playlist/detail?id=${params.id}`
+    url: `/playlist/detail?id=${params.id}`
   })
 
 // 入驻歌手
 export const getArtistList = (params: { limit: number }) =>
   request({
     method: 'get',
-    url: `/api/artist/list`,
+    url: `/artist/list`,
     params
   })
 
@@ -35,6 +35,6 @@ export const getArtistList = (params: { limit: number }) =>
 export const getHoterList = (params: { type: string; limit: number }) =>
   request({
     method: 'get',
-    url: `/api/dj/toplist`,
+    url: `/dj/toplist`,
     params
   })

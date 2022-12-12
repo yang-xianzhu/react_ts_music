@@ -1,0 +1,16 @@
+.lock {
+  position: absolute;
+  top: -14px;
+  right: 15px;
+  width: 52px;
+  height: 67px;
+  background-position: 0 -380px !important;
+}
+
+.lock > span {
+  display: block;
+  width: 18px;
+  height: 18px;
+  margin: 6px 0 0 17px;
+  cursor: pointer;
+}

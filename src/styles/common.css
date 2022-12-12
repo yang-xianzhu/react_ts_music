@@ -85,3 +85,13 @@
 .playbar-progress .ant-slider-handle::after {
   display: none;
 }
+
+/* 音量滑动条 */
+.vol-slider .ant-slider {
+  top: 2px;
+  height: 102px;
+}
+
+.vol-slider .ant-slider-handle {
+  bottom: 5%;
+}
