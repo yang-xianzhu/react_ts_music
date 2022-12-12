@@ -8,9 +8,10 @@ export default defineConfig({
   server: {
     proxy: {
       // with options
-      'codercba.com:9002': {
+      '/api': {
         target: 'http://codercba.com:9002/',
         changeOrigin: true,
+				// 将api开头的替换成''字符串
         rewrite: (path) => path.replace(/^\/api/, '')
       }
     }
