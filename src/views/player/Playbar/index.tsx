@@ -27,7 +27,8 @@ const Playbar: FC = () => {
 
   // 是否正在拖拽歌曲进度条
   const [isSliding, setIsSliding] = useState<boolean>(false)
-
+  // 当前是否处于播放状态
+  const [isPlay, setIsPlay] = useState<boolean>(false)
   // 根据歌曲ID获取歌曲url
   useEffect(() => {
     getCurrentSongUrl({
@@ -67,8 +68,15 @@ const Playbar: FC = () => {
       // 如果正在拖拽，暂停播放
       audioRef.current!.pause()
     } else {
-      //  释放拖拽就正常播放
-      audioRef.current!.play()
+      // 释放拖拽就正常播放
+      // 此次有bug
+      if (isPlay) {
+        console.log('正在处于播放状态，正常播放')
+
+        audioRef.current!.play()
+      } else {
+        console.log('正在处于暂停状态！')
+      }
     }
     setIsSliding(isSilding)
   }
@@ -101,7 +109,14 @@ const Playbar: FC = () => {
       >
         <div className={`mini-warp ${Style['context']}`}>
           {/* 左侧播放按钮组 */}
-          <PlayBottom {...{ handlePlayState }} />
+          <PlayBottom
+            {...{
+              handlePlayState,
+              getIsPlay: (cur: boolean) => {
+                setIsPlay(cur)
+              }
+            }}
+          />
           {/* 中间播放进度条 */}
           <Middle
             {...{

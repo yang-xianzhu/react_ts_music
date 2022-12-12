@@ -1,13 +1,16 @@
 import { memo, useState } from 'react'
 import Style from './style.module.css'
 
-function PlayBottom(props: any) {
-  const { handlePlayState } = props
+function PlayBottom(props: {
+  handlePlayState: (playState: boolean, cb: () => void) => void
+  getIsPlay: (state: boolean) => void
+}) {
   const [isPlay, setIsPlay] = useState<boolean>(false)
   const [playPosition, setPlayPosition] = useState<string>('0 -204px')
   // 是否播放
   function hanglePlay() {
     setIsPlay((current) => {
+      props.getIsPlay(!current)
       if (!current) {
         setPlayPosition('-40px -165px')
       } else {
@@ -44,10 +47,11 @@ function PlayBottom(props: any) {
           className="yxz-playbar"
           onClick={() => {
             // 更新父组件的播放状态,并传递一个设置播放状态的回调给父组件，但播放失败，父组件手动设置播放状态
-            handlePlayState(!isPlay, () => {
+            props.handlePlayState(!isPlay, () => {
               console.log('播放出错啦')
               hanglePlay()
             })
+
             // 自身状态维护
             hanglePlay()
           }}
