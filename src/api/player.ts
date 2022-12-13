@@ -1,4 +1,4 @@
-import request from '.'
+import http from '.'
 
 interface IGetId {
   id: number
@@ -6,31 +6,13 @@ interface IGetId {
 
 // 根据id获取音乐url
 export const getCurrentSongUrl = (params: IGetId) =>
-  request({
-    method: 'get',
-    url: '/song/url',
-    params
-  })
+  http.get(`/song/url?id=${params.id}`)
 
 // 获取歌曲详细
 export const getCurrentSongDetails = (params: IGetId) =>
-  request({
-    method: 'get',
-    url: '/song/detail',
-    params
-  })
+  http.get('/song/detail', params)
 
-export function getSimiSong(params: IGetId) {
-  return request({
-    url: '/simi/song',
-    params
-  })
-}
+export const getSimiSong = (params: IGetId) => http.get('/simi/song', params)
 
 // 获取歌词
-export function getLyric(params: IGetId) {
-  return request({
-    url: '/lyric',
-    params
-  })
-}
+export const getLyric = (params: IGetId) => http.get<IGetId>('/lyric', params)

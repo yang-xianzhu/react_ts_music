@@ -6,3 +6,10 @@ export interface TLimit {
 export interface ITopListDetail {
   id: number
 }
+
+// Response
+export interface IResult<T = any> {
+  code: number
+  message: string
+  data: T
+}

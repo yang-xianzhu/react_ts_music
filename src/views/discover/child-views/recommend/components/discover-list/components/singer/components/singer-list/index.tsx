@@ -25,7 +25,7 @@ function SingerList() {
     <div style={{ paddingBottom: '14px' }}>
       <SingerHeader {...headerInfo} />
       <ul className={SingerListStyle['singer-list']}>
-        {list.map((v: IList) => (
+        {list.slice(0, 5).map((v: IList) => (
           <li key={v.id}>
             <img
               src={transitionSamllImg(v.picUrl, 62, 62)}

@@ -23,7 +23,7 @@ function HotHost() {
     <>
       <SingerHeader {...info} />
       <ul className={HotHostStyle['hot-host-container']}>
-        {list.map((v: IHotHost, idx: number) => (
+        {list.slice(0, 12).map((v: IHotHost, idx: number) => (
           <li key={idx}>
             <img
               src={transitionSamllImg(v.picUrl, 40, 40)}

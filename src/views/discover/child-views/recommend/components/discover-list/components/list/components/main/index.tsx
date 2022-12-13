@@ -19,7 +19,7 @@ function ListMain() {
       {list.length > 0 && (
         <div style={{ marginTop: '30px' }}>
           <ul className={mainStyle['m-cvrlst']}>
-            {list.map((v: TList) => (
+            {list.slice(0, 8).map((v: TList) => (
               <li key={v.id}>
                 <div className={mainStyle['cover']}>
                   <a href="#" title={v.name} className={mainStyle['msk']}></a>

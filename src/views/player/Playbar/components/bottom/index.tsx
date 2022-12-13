@@ -49,7 +49,8 @@ function PlayBottom(props: {
             // 更新父组件的播放状态,并传递一个设置播放状态的回调给父组件，但播放失败，父组件手动设置播放状态
             props.handlePlayState(!isPlay, () => {
               console.log('播放出错啦')
-              hanglePlay()
+              // 暂停播放
+              setIsPlay(false)
             })
 
             // 自身状态维护

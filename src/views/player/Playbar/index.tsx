@@ -33,7 +33,7 @@ const Playbar: FC = () => {
   useEffect(() => {
     getCurrentSongUrl({
       id: 1876100097
-    }).then((res) => {
+    }).then((res: any) => {
       audioRef.current!.src = res.data[0].url
       // console.log('歌曲加载完成')
     })
@@ -72,7 +72,6 @@ const Playbar: FC = () => {
       // 此次有bug
       if (isPlay) {
         console.log('正在处于播放状态，正常播放')
-
         audioRef.current!.play()
       } else {
         console.log('正在处于暂停状态！')

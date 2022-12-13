@@ -1,40 +1,21 @@
-import request from '@/api'
-import { ITopListDetail } from './type'
+import http from '@/api'
+import { ITopListDetail, TLimit } from './type'
 
 // 轮播图数据
-export const getBannerList = () =>
-  request({
-    method: 'get',
-    url: '/banner'
-  })
+export const getBannerList = () => http.get('/banner')
 
 // 热门推荐
-export const getPersonalized = (params: any) =>
-  request({
-    method: 'get',
-    url: '/personalized',
-    params
-  })
+export const getPersonalized = (params: TLimit) =>
+  http.get('/personalized', params)
 
 // 榜单
 export const getTopListDetail = (params: ITopListDetail) =>
-  request({
-    method: 'get',
-    url: `/playlist/detail?id=${params.id}`
-  })
+  http.get(`/playlist/detail?id=${params.id}`)
 
 // 入驻歌手
-export const getArtistList = (params: { limit: number }) =>
-  request({
-    method: 'get',
-    url: `/artist/list`,
-    params
-  })
+export const getArtistList = (params: TLimit) =>
+  http.get('/artist/list', params)
 
 // 热门主播
-export const getHoterList = (params: { type: string; limit: number }) =>
-  request({
-    method: 'get',
-    url: `/dj/toplist`,
-    params
-  })
+export const getHoterList = (params: { type: string } & TLimit) =>
+  http.get('/dj/toplist', params)

@@ -1,9 +1,5 @@
-import request from './index'
+import http from './index'
 import type { TLimit } from './type'
 
-export const getAlbumList = (params: TLimit) => {
-  return request({
-    url: '/album/newest',
-    params
-  })
-}
+export const getAlbumList = (params: TLimit) =>
+  http.get('/album/newest', params)
