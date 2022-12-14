@@ -14,7 +14,7 @@ function Middle(props: {
   getCurrentTimeText: (val: number) => void
   currentSong: IPlayer
 }) {
-  const { name, al, ar } = props.currentSong as IPlayer
+  const { name = '', al, ar = [] } = props.currentSong as IPlayer
   return (
     <>
       <div className={Style['middle']}>
@@ -25,7 +25,7 @@ function Middle(props: {
             title={name}
           />
           <Link to="/" className="yxz-playbar">
-            {al.name}
+            {al?.name}
           </Link>
         </div>
         <div className={Style['play']}>

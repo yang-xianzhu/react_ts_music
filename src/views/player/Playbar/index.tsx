@@ -29,19 +29,24 @@ const Playbar: FC = () => {
   const [isSliding, setIsSliding] = useState<boolean>(false)
   // 当前是否处于播放状态
   const [isPlay, setIsPlay] = useState<boolean>(false)
+
   // 根据歌曲ID获取歌曲url
   useEffect(() => {
+    // 设置音乐播放总时长
+    setDuration(currentSong.dt)
+    // 1、获取歌曲
     getCurrentSongUrl({
-      id: 1876100097
+      id: currentSong.id
     }).then((res: any) => {
       audioRef.current!.src = res.data[0].url
-      // console.log('歌曲加载完成')
+      console.log('歌曲加载完成')
     })
-  }, [])
+    // 2. 获取歌词
+  }, [currentSong])
 
-  // 设置当前音乐的总时长
+  // 设置默认音量
   useEffect(() => {
-    setDuration(currentSong.dt)
+    audioRef.current!.volume = 0.6
   }, [])
 
   // 切换播放状态
@@ -69,7 +74,6 @@ const Playbar: FC = () => {
       audioRef.current!.pause()
     } else {
       // 释放拖拽就正常播放
-      // 此次有bug
       if (isPlay) {
         console.log('正在处于播放状态，正常播放')
         audioRef.current!.play()
@@ -88,6 +92,11 @@ const Playbar: FC = () => {
 
   function getCurrentTimeText(val: number) {
     setCurrentTime(val)
+  }
+
+  // 获取当前播放状态
+  function getIsPlay(state: boolean) {
+    setIsPlay(state)
   }
 
   return (
@@ -111,9 +120,7 @@ const Playbar: FC = () => {
           <PlayBottom
             {...{
               handlePlayState,
-              getIsPlay: (cur: boolean) => {
-                setIsPlay(cur)
-              }
+              getIsPlay
             }}
           />
           {/* 中间播放进度条 */}
@@ -131,7 +138,13 @@ const Playbar: FC = () => {
           />
           {/* 右侧按钮 */}
           <RightOpen />
-          <Ctrl />
+          <Ctrl
+            {...{
+              getVol: (val: number) => {
+                audioRef.current!.volume = val / 100
+              }
+            }}
+          />
         </div>
         {/* 锁定解锁按钮 */}
         <Lock

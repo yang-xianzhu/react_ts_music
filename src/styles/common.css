@@ -88,10 +88,35 @@
 
 /* 音量滑动条 */
 .vol-slider .ant-slider {
-  top: 2px;
-  height: 102px;
+  top: 9px;
+  height: 93px;
 }
 
 .vol-slider .ant-slider-handle {
-  bottom: 5%;
+  left: -3px;
+  border: none;
+  margin-top: -7px;
+  width: 18px;
+  height: 20px;
+  background: url('@/assets/images/iconall.png') no-repeat -40px -250px;
+}
+
+.playbar-progress .ant-slider-track {
+  bottom: 4px;
+  left: 0;
+}
+
+/* .vol-slider .ant-slider-rail {
+  height: 0%;
+  height: 93px;
+  background: url('@/assets/images/playbar.png') no-repeat -40px bottom;
+  background-position: 0 -503px;
+} */
+
+.vol-slider .ant-slider-handle::before {
+  display: none;
+}
+
+.vol-slider .ant-slider-handle::after {
+  display: none;
 }

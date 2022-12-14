@@ -3,7 +3,7 @@ import Style from './style.module.css'
 import type { ICurState } from './type'
 import { Slider } from 'antd'
 
-function Ctrl() {
+const Ctrl = (props: { getVol: (val: number) => void }) => {
   const [active, setActive] = useState<boolean>(false)
   const [timer, setTimer] = useState<number | null>(null)
   const [currentStateNum, setCurrentStateNum] = useState<number>(1)
@@ -38,6 +38,7 @@ function Ctrl() {
   const [isShowVolume, setShowVolume] = useState<boolean>(false)
   const [currentVolState, setVolState] = useState<string>('')
   const [isInVol, setIsInVol] = useState<boolean>(false)
+  // 当前的音量值
   const [curVol, setCurVol] = useState<number>(60)
   // 音量状态
   const VolState: { [k in string]: () => void } = {
@@ -153,9 +154,12 @@ function Ctrl() {
             vertical
             defaultValue={curVol}
             onAfterChange={(val: number) => {
+              props.getVol(val)
               setCurVol(val)
             }}
             onChange={(val: number) => {
+              props.getVol(val)
+
               setCurVol(val)
             }}
             tooltip={{ formatter: null }}
