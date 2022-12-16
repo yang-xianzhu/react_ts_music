@@ -15,5 +15,5 @@ pnpm install
 3、运行项目
 
 ```npm
-pnpm start
+pnpm serve
 ```
