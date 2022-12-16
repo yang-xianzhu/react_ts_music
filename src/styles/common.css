@@ -101,17 +101,10 @@
   background: url('@/assets/images/iconall.png') no-repeat -40px -250px;
 }
 
-.playbar-progress .ant-slider-track {
+.vol-slider .ant-slider-track {
   bottom: 4px;
-  left: 0;
+  background: #b7291f !important;
 }
-
-/* .vol-slider .ant-slider-rail {
-  height: 0%;
-  height: 93px;
-  background: url('@/assets/images/playbar.png') no-repeat -40px bottom;
-  background-position: 0 -503px;
-} */
 
 .vol-slider .ant-slider-handle::before {
   display: none;

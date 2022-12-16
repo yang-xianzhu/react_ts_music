@@ -4,6 +4,8 @@ import Style from './style.module.css'
 import { getTopListDetail } from '@/api/recommend'
 import type { IPlaylist } from './type'
 import { transitionSamllImg } from '@/utils'
+import { fetchCurrentSongAction } from '@/store/modules/player/player'
+import store from '@/store'
 
 // 榜单id
 const listIDArr = [19723756, 3779629, 2884035]
@@ -22,6 +24,9 @@ function Main() {
     })
   }, [])
 
+  function playSong(id: number) {
+    store.dispatch(fetchCurrentSongAction({ ids: id }))
+  }
   return (
     <>
       {list.length > 0 && (
@@ -59,13 +64,19 @@ function Main() {
                   </Link>
                   <div className={Style['oper-box']}>
                     <div className={Style['oper']}>
-                      <Link to="/" className="yxz-sprite">
+                      <Link
+                        to="#/"
+                        className="yxz-sprite"
+                        onClick={() => {
+                          playSong(item.id)
+                        }}
+                      >
                         播放
                       </Link>
-                      <Link to="/" className="yxz-icon">
+                      <Link to="#/" className="yxz-icon">
                         添加到播放列表
                       </Link>
-                      <Link to="/" className="yxz-sprite">
+                      <Link to="#/" className="yxz-sprite">
                         收藏
                       </Link>
                     </div>

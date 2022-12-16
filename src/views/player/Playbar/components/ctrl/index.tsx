@@ -4,8 +4,8 @@ import type { ICurState } from './type'
 import { Slider } from 'antd'
 
 const Ctrl = (props: { getVol: (val: number) => void }) => {
-  const [active, setActive] = useState<boolean>(false)
   const [timer, setTimer] = useState<number | null>(null)
+  const [active, setActive] = useState<boolean>(false)
   const [currentStateNum, setCurrentStateNum] = useState<number>(1)
   const [isMouseIn, setIsMouseIn] = useState<boolean>(false)
   // 当前播放状态
@@ -36,6 +36,7 @@ const Ctrl = (props: { getVol: (val: number) => void }) => {
 
   // 是否显示音量条
   const [isShowVolume, setShowVolume] = useState<boolean>(false)
+  const [volTimer, setVolTimer] = useState<number | null>(null)
   const [currentVolState, setVolState] = useState<string>('')
   const [isInVol, setIsInVol] = useState<boolean>(false)
   // 当前的音量值
@@ -75,14 +76,19 @@ const Ctrl = (props: { getVol: (val: number) => void }) => {
       }
     })
 
-    setActive(true)
+    // 控制播放模式显隐
+    delayNone([timer, setTimer, setActive])
+  }
+
+  function delayNone([timer, setTimer, setVal]: any[]) {
+    setVal(true)
 
     if (timer) {
       clearTimeout(timer)
     }
 
     const t = setTimeout(() => {
-      setActive(false)
+      setVal(false)
     }, 2000)
 
     setTimer(t)
@@ -97,7 +103,8 @@ const Ctrl = (props: { getVol: (val: number) => void }) => {
             backgroundPosition: currentVolState
           }}
           onClick={() => {
-            setShowVolume((cur) => !cur)
+            // 切换音量显隐
+            delayNone([volTimer, setVolTimer, setShowVolume])
           }}
           onMouseEnter={() => {
             setIsInVol(true)

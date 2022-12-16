@@ -7,11 +7,18 @@ import RightOpen from './components/right'
 import Ctrl from './components/ctrl'
 import Lock from './components/lock'
 import { getCurrentSongUrl } from '@/api/player'
+import store from '@/store'
+import { changeCurrentLyricsIdx } from '@/store/modules/player/player'
 
 const Playbar: FC = () => {
   // 获取当前播放歌曲信息
-  const { currentSong } = useSelector((state: any) => state.player)
+  const { currentSong, lyrics, lyricsIdx } = useSelector(
+    (state: any) => state.player
+  )
 
+  // useEffect(() => {
+  //   console.log(lyricsIdx)
+  // }, [lyricsIdx])
   // 是否锁住play状态
   const [isLock, setIsLock] = useState<boolean>(true)
   const [bottom, setBottom] = useState<string>('0')
@@ -39,6 +46,11 @@ const Playbar: FC = () => {
       id: currentSong.id
     }).then((res: any) => {
       audioRef.current!.src = res.data[0].url
+      // setIsPlay(true)
+      // audioRef.current!.play().catch(() => {
+      //   console.log('播放失败!')
+      //   setIsPlay(false)
+      // })
       console.log('歌曲加载完成')
     })
     // 2. 获取歌词
@@ -51,6 +63,7 @@ const Playbar: FC = () => {
 
   // 切换播放状态
   function handlePlayState(playState: boolean, cb: () => void) {
+    // console.log('当前播放状态', playState)
     if (playState) {
       audioRef.current!.play().catch(() => {
         // 需要重新维护播放状态按钮
@@ -168,6 +181,18 @@ const Playbar: FC = () => {
               setCurrentTime(curTime)
               setCurPlayBar(progressTime)
               // console.log('当前播放时间', progressTime)
+              let index = -1
+              for (let i = 0; i < lyrics.length; i++) {
+                if (lyrics[i].time > curTime) {
+                  index = i === lyrics.length - 1 ? i : i - 1
+                  break
+                }
+              }
+              // 记录当前播放中的歌词
+              if (index !== lyricsIdx) {
+                store.dispatch(changeCurrentLyricsIdx(index))
+                console.log(lyrics[index]?.text)
+              }
             }
           }}
         />

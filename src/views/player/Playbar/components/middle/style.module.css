@@ -1,7 +1,8 @@
 .middle {
+  position: relative;
   display: flex;
   align-items: center;
-  margin-left: 30px;
+  margin: 0 60px 0 30px;
 }
 
 .img-box {
@@ -88,8 +89,9 @@
 }
 
 .time {
-  display: flex;
-  align-self: flex-end;
+  position: absolute;
+  bottom: 0;
+  right: -62px;
   color: #797979;
   font-size: 12px;
   text-shadow: 0 1px 0 #121212;

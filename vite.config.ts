@@ -5,7 +5,6 @@ import { resolve } from 'path'
 const CONFIG = {
   TARGET: 'http://codercba.com:9002'
 }
-
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],

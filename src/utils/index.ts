@@ -45,3 +45,30 @@ export const transitionTimer = (time: number) => {
 
   return `${formatMinute}:${formatSecond}`
 }
+
+export interface ILyricArr {
+  text: string
+  time: number
+}
+// 解析歌词
+const timeRegExp = /\[(\d{2}):(\d{2}).(\d{2,3})\]/
+export const parseLyric = (lyricString: string) => {
+  const lyric: ILyricArr[] = []
+
+  const arr = lyricString.split('\n')
+  const _len = arr.length
+  for (let i = 0; i < _len; i++) {
+    const results = timeRegExp.exec(arr[i])
+    if (!results) continue
+    const time1 = Number(results[1]) * 60 * 1000
+    const time2 = Number(results[2]) * 1000
+    const time3 =
+      results[3].length === 3 ? Number(results[3]) : Number(results[3]) * 10
+    const timeRes = time1 + time2 + time3
+    lyric.push({
+      time: timeRes,
+      text: arr[i].replace(timeRegExp, '')
+    })
+  }
+  return lyric
+}

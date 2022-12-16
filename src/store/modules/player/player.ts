@@ -2,27 +2,35 @@ import { getCurrentSongDetails } from '@/api/player'
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import type { IPlayer } from './type'
 import { getLyric } from '@/api/player'
+import { ILyricArr, parseLyric } from '@/utils'
+
 interface IPlayState {
   currentSong: IPlayer
+  lyrics: ILyricArr[]
+  lyricsIdx: number
 }
 
 export const fetchCurrentSongAction = createAsyncThunk(
   'currentSong',
   (params: { ids: number }, { dispatch }) => {
+    // 获取歌曲
     getCurrentSongDetails(params).then((res: any) => {
       if (!res.songs.length) return
       const song = res.songs[0]
       dispatch(changeCurrntSongAction(song))
     })
+    // 获取歌词
     getLyric({
       id: params.ids
     }).then((res) => {
-      console.log('获取歌词了', res)
+      const arr = parseLyric(res?.lrc?.lyric)
+      dispatch(changeCurrentLyrics(arr))
     })
   }
 )
 
 const initialState: IPlayState = {
+  // 当前播放的歌曲
   currentSong: {
     name: '必殺技 Live',
     id: 1876100097,
@@ -103,7 +111,11 @@ const initialState: IPlayState = {
     mst: 9,
     cp: 0,
     publishTime: 0
-  }
+  },
+  // 歌词数组
+  lyrics: [],
+  // 当前播放中的歌词
+  lyricsIdx: -1
 }
 
 const playerSlice = createSlice({
@@ -113,10 +125,22 @@ const playerSlice = createSlice({
     // 切换当前歌曲
     changeCurrntSongAction(state, { payload }) {
       state.currentSong = payload
+    },
+    // 切换当前歌曲的歌词数组
+    changeCurrentLyrics(state, { payload }) {
+      state.lyrics = payload
+    },
+    // 切换当前歌曲的播放中的歌词
+    changeCurrentLyricsIdx(state, { payload }) {
+      state.lyricsIdx = payload
     }
   }
 })
 
-export const { changeCurrntSongAction } = playerSlice.actions
+export const {
+  changeCurrntSongAction,
+  changeCurrentLyrics,
+  changeCurrentLyricsIdx
+} = playerSlice.actions
 
 export default playerSlice.reducer
