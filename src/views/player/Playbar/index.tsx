@@ -16,17 +16,10 @@ const Playbar: FC = () => {
     (state: any) => state.player
   )
 
-  // const { isPlay } = useSelector((state: any) => state.playbar)
-  // console.log('test', test)
-
-  // useEffect(() => {
-  //   console.log(lyricsIdx)
-  // }, [lyricsIdx])
-
-  // 是否锁住play状态
-  const [isLock, setIsLock] = useState<boolean>(true)
   const [bottom, setBottom] = useState<string>('0')
 
+  // 获取当前播放状态
+  const { isPlay, isLock } = useSelector((state: any) => state.playbar)
   // 获取音频ref
   const audioRef = useRef<HTMLAudioElement>(null)
   // 当前播放进度条
@@ -38,8 +31,15 @@ const Playbar: FC = () => {
 
   // 是否正在拖拽歌曲进度条
   const [isSliding, setIsSliding] = useState<boolean>(false)
-  // 当前是否处于播放状态
-  const [isPlay, setIsPlay] = useState<boolean>(false)
+
+  // 侦听播放状态
+  useEffect(() => {
+    if (isPlay) {
+      audioRef.current!.play().catch(() => {})
+    } else {
+      audioRef.current!.pause()
+    }
+  }, [isPlay])
 
   // 根据歌曲ID获取歌曲url
   useEffect(() => {
@@ -48,6 +48,16 @@ const Playbar: FC = () => {
     // 获取歌曲、歌词
     handleCurrentSongUrl(currentSong.id)
   }, [currentSong])
+
+  // 设置默认音量
+  useEffect(() => {
+    audioRef.current!.volume = 0.6
+  }, [])
+
+  // 侦听歌词变化
+  // useEffect(() => {
+  //   console.log(lyricsIdx)
+  // }, [lyricsIdx])
 
   function handleCurrentSongUrl(id: number) {
     getCurrentSongUrl({
@@ -59,26 +69,8 @@ const Playbar: FC = () => {
       //   console.log('播放失败!')
       //   setIsPlay(false)
       // })
-      console.log('歌曲加载完成')
+      // console.log('歌曲加载完成')
     })
-  }
-
-  // 设置默认音量
-  useEffect(() => {
-    audioRef.current!.volume = 0.6
-  }, [])
-
-  // 切换播放状态
-  function handlePlayState(playState: boolean, cb: () => void) {
-    // console.log('当前播放状态', playState)
-    if (playState) {
-      audioRef.current!.play().catch(() => {
-        // 需要重新维护播放状态按钮
-        cb()
-      })
-    } else {
-      audioRef.current!.pause()
-    }
   }
 
   // 获取当前音乐播放时间
@@ -114,11 +106,6 @@ const Playbar: FC = () => {
     setCurrentTime(val)
   }
 
-  // 获取当前播放状态
-  function getIsPlay(state: boolean) {
-    setIsPlay(state)
-  }
-
   return (
     <>
       <div
@@ -137,12 +124,7 @@ const Playbar: FC = () => {
       >
         <div className={`mini-warp ${Style['context']}`}>
           {/* 左侧播放按钮组 */}
-          <PlayBottom
-            {...{
-              handlePlayState,
-              getIsPlay
-            }}
-          />
+          <PlayBottom />
           {/* 中间播放进度条 */}
           <Middle
             {...{
@@ -167,13 +149,7 @@ const Playbar: FC = () => {
           />
         </div>
         {/* 锁定解锁按钮 */}
-        <Lock
-          {...{
-            getLockState: (state: boolean) => {
-              setIsLock(state)
-            }
-          }}
-        />
+        <Lock />
         {/* 歌曲音频 */}
         <audio
           ref={audioRef}

@@ -1,24 +1,22 @@
 import { memo, useEffect, useState } from 'react'
 import Style from './style.module.css'
 import type { IState } from './type'
+import store from '@/store'
+import { changeIsLock } from '@/store/modules/playbar'
+import { useSelector } from 'react-redux'
 
-function Lock(props: { getLockState: (state: boolean) => void }) {
-  const [isMouseIn, setMouseIn] = useState(false)
-  const [lockState, setLockState] = useState<IState>({} as IState)
-  const [isLock, setIsLock] = useState(true)
+function Lock() {
+  const [isMouseIn, setMouseIn] = useState<boolean>(false)
+  const [lockState, setLockState] = useState<string>('')
+
+  const { isLock } = useSelector((state: any) => state.playbar)
 
   const STATE = {
     1: () => {
-      setLockState({
-        position: isMouseIn ? '-100px -400px' : '-100px -380px',
-        isLock: true
-      })
+      setLockState(isMouseIn ? '-100px -400px' : '-100px -380px')
     },
     2: () => {
-      setLockState({
-        position: isMouseIn ? '-80px -400px' : '-80px -380px',
-        isLock: false
-      })
+      setLockState(isMouseIn ? '-80px -400px' : '-80px -380px')
     }
   }
 
@@ -31,10 +29,7 @@ function Lock(props: { getLockState: (state: boolean) => void }) {
   }, [isMouseIn, isLock])
 
   function hangleLock() {
-    setIsLock((cur) => {
-      props.getLockState(!cur)
-      return !cur
-    })
+    store.dispatch(changeIsLock(!isLock))
   }
 
   function enterLock() {
@@ -50,9 +45,9 @@ function Lock(props: { getLockState: (state: boolean) => void }) {
       <div className={`yxz-playbar ${Style['lock']}`}>
         <span
           className="yxz-playbar"
-          title={!lockState.isLock ? '锁定' : '解锁'}
+          title={!isLock ? '锁定' : '解锁'}
           style={{
-            backgroundPosition: lockState.position
+            backgroundPosition: lockState
           }}
           onClick={() => {
             hangleLock()

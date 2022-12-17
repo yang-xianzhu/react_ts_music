@@ -1,23 +1,21 @@
 import { memo, useState } from 'react'
 import Style from './style.module.css'
+import { changeIsPlay } from '@/store/modules/playbar'
+import store from '@/store'
+import { useSelector } from 'react-redux'
 
-function PlayBottom(props: {
-  handlePlayState: (playState: boolean, cb: () => void) => void
-  getIsPlay: (state: boolean) => void
-}) {
-  const [isPlay, setIsPlay] = useState<boolean>(false)
+function PlayBottom() {
+  const { isPlay } = useSelector((state: any) => state.playbar)
   const [playPosition, setPlayPosition] = useState<string>('0 -204px')
+
   // 是否播放
-  function hanglePlay() {
-    setIsPlay((current) => {
-      props.getIsPlay(!current)
-      if (!current) {
-        setPlayPosition('-40px -165px')
-      } else {
-        setPlayPosition('-40px -204px')
-      }
-      return !current
-    })
+  function hanglePlay(curState: boolean) {
+    store.dispatch(changeIsPlay(curState))
+    if (curState) {
+      setPlayPosition('-40px -165px')
+    } else {
+      setPlayPosition('-40px -204px')
+    }
   }
 
   function enterPlay() {
@@ -46,15 +44,8 @@ function PlayBottom(props: {
           title={isPlay ? '暂停' : '播放'}
           className="yxz-playbar"
           onClick={() => {
-            // 更新父组件的播放状态,并传递一个设置播放状态的回调给父组件，但播放失败，父组件手动设置播放状态
-            props.handlePlayState(!isPlay, () => {
-              console.log('播放出错啦')
-              // 暂停播放
-              setIsPlay(false)
-            })
-
             // 自身状态维护
-            hanglePlay()
+            hanglePlay(!isPlay)
           }}
           style={{
             backgroundPosition: playPosition
