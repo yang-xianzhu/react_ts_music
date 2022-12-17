@@ -16,9 +16,13 @@ const Playbar: FC = () => {
     (state: any) => state.player
   )
 
+  // const { isPlay } = useSelector((state: any) => state.playbar)
+  // console.log('test', test)
+
   // useEffect(() => {
   //   console.log(lyricsIdx)
   // }, [lyricsIdx])
+
   // 是否锁住play状态
   const [isLock, setIsLock] = useState<boolean>(true)
   const [bottom, setBottom] = useState<string>('0')
@@ -41,9 +45,13 @@ const Playbar: FC = () => {
   useEffect(() => {
     // 设置音乐播放总时长
     setDuration(currentSong.dt)
-    // 1、获取歌曲
+    // 获取歌曲、歌词
+    handleCurrentSongUrl(currentSong.id)
+  }, [currentSong])
+
+  function handleCurrentSongUrl(id: number) {
     getCurrentSongUrl({
-      id: currentSong.id
+      id: id
     }).then((res: any) => {
       audioRef.current!.src = res.data[0].url
       // setIsPlay(true)
@@ -53,8 +61,7 @@ const Playbar: FC = () => {
       // })
       console.log('歌曲加载完成')
     })
-    // 2. 获取歌词
-  }, [currentSong])
+  }
 
   // 设置默认音量
   useEffect(() => {
