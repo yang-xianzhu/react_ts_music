@@ -3,7 +3,10 @@ import Style from './style.module.css'
 import type { ICurState } from './type'
 import { Slider } from 'antd'
 
-const Ctrl = (props: { getVol: (val: number) => void }) => {
+const Ctrl = (props: {
+  getVol: (val: number) => void
+  handleSongTitle: (state: boolean) => void
+}) => {
   const [timer, setTimer] = useState<number | null>(null)
   const [active, setActive] = useState<boolean>(false)
   const [currentStateNum, setCurrentStateNum] = useState<number>(1)
@@ -104,7 +107,8 @@ const Ctrl = (props: { getVol: (val: number) => void }) => {
           }}
           onClick={() => {
             // 切换音量显隐
-            delayNone([volTimer, setVolTimer, setShowVolume])
+            setShowVolume((cur) => !cur)
+            // delayNone([volTimer, setVolTimer, setShowVolume])
           }}
           onMouseEnter={() => {
             setIsInVol(true)
@@ -134,7 +138,12 @@ const Ctrl = (props: { getVol: (val: number) => void }) => {
           播放模式
         </span>
         {/* 播放列表 */}
-        <div className={`${Style['add']}`}>
+        <div
+          className={`${Style['add']}`}
+          onClick={() => {
+            props.handleSongTitle(true)
+          }}
+        >
           <span
             className={`yxz-playbar ${Style['icn-list']}`}
             title="播放列表"

@@ -2,9 +2,9 @@ import { HashRouter as Router } from 'react-router-dom'
 import ReactDOM from 'react-dom/client'
 import App from '@/App'
 // 重置css样式
-import '@/styles/reset.css'
 import '@/styles/common.css'
 import 'antd/dist/reset.css'
+import '@/styles/reset.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 

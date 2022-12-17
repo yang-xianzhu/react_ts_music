@@ -6,6 +6,7 @@ import Middle from './components/middle'
 import RightOpen from './components/right'
 import Ctrl from './components/ctrl'
 import Lock from './components/lock'
+import PlayList from './components/playList'
 import { getCurrentSongUrl } from '@/api/player'
 import store from '@/store'
 import { changeCurrentLyricsIdx } from '@/store/modules/player/player'
@@ -32,10 +33,15 @@ const Playbar: FC = () => {
   // 是否正在拖拽歌曲进度条
   const [isSliding, setIsSliding] = useState<boolean>(false)
 
+  // 是否显示歌词
+  const [isShowSongTitle, setShowSongTitle] = useState<boolean>(false)
+
   // 侦听播放状态
   useEffect(() => {
     if (isPlay) {
-      audioRef.current!.play().catch(() => {})
+      audioRef.current!.play().catch(() => {
+        console.log('播放进去了catch')
+      })
     } else {
       audioRef.current!.pause()
     }
@@ -106,6 +112,10 @@ const Playbar: FC = () => {
     setCurrentTime(val)
   }
 
+  // 切换歌词显隐状态
+  function handleSongTitle(state: boolean) {
+    setShowSongTitle(state)
+  }
   return (
     <>
       <div
@@ -123,6 +133,8 @@ const Playbar: FC = () => {
         }}
       >
         <div className={`mini-warp ${Style['context']}`}>
+          {/* 歌词盒子 */}
+          {isShowSongTitle && <PlayList {...{ handleSongTitle }} />}
           {/* 左侧播放按钮组 */}
           <PlayBottom />
           {/* 中间播放进度条 */}
@@ -144,7 +156,8 @@ const Playbar: FC = () => {
             {...{
               getVol: (val: number) => {
                 audioRef.current!.volume = val / 100
-              }
+              },
+              handleSongTitle
             }}
           />
         </div>
@@ -163,7 +176,7 @@ const Playbar: FC = () => {
               // 设置当前播放时间
               setCurrentTime(curTime)
               setCurPlayBar(progressTime)
-              // console.log('当前播放时间', progressTime)
+
               let index = -1
               for (let i = 0; i < lyrics.length; i++) {
                 if (lyrics[i].time > curTime) {
@@ -174,6 +187,7 @@ const Playbar: FC = () => {
               // 记录当前播放中的歌词
               if (index !== lyricsIdx) {
                 store.dispatch(changeCurrentLyricsIdx(index))
+                // console.log('@@@', index)
                 console.log(lyrics[index]?.text)
               }
             }

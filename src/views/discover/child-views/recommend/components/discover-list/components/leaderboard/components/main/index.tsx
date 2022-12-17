@@ -73,15 +73,6 @@ function Main() {
                       >
                         播放
                       </Link>
-                      <Link
-                        to="#/"
-                        className="yxz-sprite"
-                        onClick={() => {
-                          playSong(item.id)
-                        }}
-                      >
-                        播放
-                      </Link>
                       <Link to="#/" className="yxz-icon">
                         添加到播放列表
                       </Link>

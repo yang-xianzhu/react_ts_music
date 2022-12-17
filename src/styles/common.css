@@ -45,6 +45,10 @@
   background: url('@/assets/images/iconall.png') no-repeat 0 -99999px;
 }
 
+.yxz-playlist {
+  background: url('@/assets/images/playlist.png') no-repeat 0 -99999px;
+}
+
 .foot-img {
   background: url('@/assets/images/foot_enter.png') no-repeat 0 -99999px;
   background-size: 220px 220px;

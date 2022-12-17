@@ -3,6 +3,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import type { IPlayer } from './type'
 import { getLyric } from '@/api/player'
 import { ILyricArr, parseLyric } from '@/utils'
+import store from '@/store'
+import { changeIsPlay } from '@/store/modules/playbar'
 
 interface IPlayState {
   currentSong: IPlayer
@@ -18,6 +20,8 @@ export const fetchCurrentSongAction = createAsyncThunk(
       if (!res.songs.length) return
       const song = res.songs[0]
       dispatch(changeCurrntSongAction(song))
+      // 自动播放音乐
+      // store.dispatch(changeIsPlay(true))
     })
     // 获取歌词
     getLyric({
