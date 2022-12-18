@@ -91,15 +91,25 @@ const PlayList: FC<IProps> = (props) => {
           <div className={Style['listlyric-container']}>
             <div className={Style['listlyric']} ref={listlyricRef}>
               {lyrics?.map((v: IItem, idx: number) => {
-                // if (v.text === '') return null
                 return (
-                  <p
-                    key={idx}
-                    className={`${lyricsIdx === idx && Style['active']}`}
-                  >
-                    {v.text}
-                  </p>
+                  <>
+                    <p
+                      key={idx}
+                      className={`${lyricsIdx === idx && Style['active']}`}
+                    >
+                      {v.text}
+                    </p>
+                  </>
                 )
+
+                // return v.text !== '' ? (
+                //   <p
+                //     key={idx}
+                //     className={`${lyricsIdx === idx && Style['active']}`}
+                //   >
+                //     {v.text}
+                //   </p>
+                // ) : null
               })}
             </div>
           </div>

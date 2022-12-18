@@ -20,6 +20,7 @@ export const fetchCurrentSongAction = createAsyncThunk(
       if (!res.songs.length) return
       const song = res.songs[0]
       dispatch(changeCurrntSongAction(song))
+      console.log('切歌了')
       // 自动播放音乐
       // store.dispatch(changeIsPlay(true))
     })

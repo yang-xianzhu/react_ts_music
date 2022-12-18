@@ -60,22 +60,11 @@ const Playbar: FC = () => {
     audioRef.current!.volume = 0.6
   }, [])
 
-  // 侦听歌词变化
-  // useEffect(() => {
-  //   console.log(lyricsIdx)
-  // }, [lyricsIdx])
-
   function handleCurrentSongUrl(id: number) {
     getCurrentSongUrl({
-      id: id
+      id
     }).then((res: any) => {
       audioRef.current!.src = res.data[0].url
-      // setIsPlay(true)
-      // audioRef.current!.play().catch(() => {
-      //   console.log('播放失败!')
-      //   setIsPlay(false)
-      // })
-      // console.log('歌曲加载完成')
     })
   }
 
@@ -146,6 +135,7 @@ const Playbar: FC = () => {
       console.log(lyrics[index]?.text)
     }
   }
+
   return (
     <>
       <div
