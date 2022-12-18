@@ -10,6 +10,7 @@ import PlayList from './components/playList'
 import { getCurrentSongUrl } from '@/api/player'
 import store from '@/store'
 import { changeCurrentLyricsIdx } from '@/store/modules/player/player'
+import { changeIsPlay } from '@/store/modules/playbar'
 
 const Playbar: FC = () => {
   // 获取当前播放歌曲信息
@@ -38,9 +39,11 @@ const Playbar: FC = () => {
 
   // 侦听播放状态
   useEffect(() => {
+    // console.log('当前的播放状态:', isPlay)
     if (isPlay) {
       audioRef.current!.play().catch(() => {
         console.log('播放进去了catch')
+        store.dispatch(changeIsPlay(false))
       })
     } else {
       audioRef.current!.pause()
@@ -132,7 +135,7 @@ const Playbar: FC = () => {
     if (index !== lyricsIdx) {
       store.dispatch(changeCurrentLyricsIdx(index))
       // console.log('@@@', index)
-      console.log(lyrics[index]?.text)
+      // console.log(lyrics[index]?.text)
     }
   }
 

@@ -50,9 +50,10 @@ export interface ILyricArr {
   text: string
   time: number
 }
+
 // 解析歌词
-const timeRegExp = /\[(\d{2}):(\d{2}).(\d{2,3})\]/
 export const parseLyric = (lyricString: string) => {
+  const timeRegExp = /\[(\d{2}):(\d{2}).(\d{2,3})\]/
   const lyric: ILyricArr[] = []
 
   const arr = lyricString.split('\n')

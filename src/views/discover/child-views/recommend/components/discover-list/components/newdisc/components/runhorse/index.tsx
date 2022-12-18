@@ -3,6 +3,8 @@ import { memo, useEffect, useState } from 'react'
 import Style from './style.module.css'
 import { TChangType, IList } from './type'
 import { transitionSamllImg } from '@/utils'
+// import { fetchCurrentSongAction } from '@/store/modules/player/player'
+// import store from '@/store'
 
 const RunHorse = () => {
   const [currentNum, setCurrentNum] = useState(0)
@@ -42,6 +44,11 @@ const RunHorse = () => {
       setLeft(left + 660)
     }
   }
+
+  function playSong() {
+    // console.log(id)
+    // store.dispatch(fetchCurrentSongAction({ ids: id }))
+  }
   return (
     <>
       <div className={Style['runhorse-main']}>
@@ -70,6 +77,14 @@ const RunHorse = () => {
                 {item.map((v: IList) => (
                   <li key={v.id} className="yxz-coverall">
                     <div className={Style['item-box']}>
+                      <span
+                        className={`yxz-iconall  ${Style['icon-play']}`}
+                        onClick={() => {
+                          playSong()
+                        }}
+                      >
+                        播放
+                      </span>
                       <img
                         src={transitionSamllImg(v.blurPicUrl, 100, 100)}
                         alt=""

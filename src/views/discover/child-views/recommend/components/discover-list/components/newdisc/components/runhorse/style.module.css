@@ -36,8 +36,30 @@
 }
 
 .item-box {
+  position: relative;
   width: 100px;
   height: 100px;
+}
+
+.item-box:hover .icon-play {
+  display: block;
+}
+
+.item-box .icon-play {
+  display: none;
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  width: 22px;
+  height: 22px;
+  background-position: 0 -85px;
+  z-index: 2;
+  text-indent: -99999px;
+  cursor: pointer;
+}
+
+.item-box .icon-play:hover {
+  background-position: 0 -110px;
 }
 
 .item-box > p {

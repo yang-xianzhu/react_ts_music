@@ -1,45 +1,47 @@
-import { memo, useEffect, useState } from 'react'
+import { memo, useEffect, useMemo, useState } from 'react'
 import Style from './style.module.css'
-import type { ICurState } from './type'
 import { Slider } from 'antd'
+import { useSelector } from 'react-redux'
+import store from '@/store'
+import { changePlayMode } from '@/store/modules/player/player'
 
 const Ctrl = (props: {
   getVol: (val: number) => void
   handleSongTitle: (state: boolean) => void
 }) => {
+  // 获取当前播放歌曲信息
+  const { playSongList, playMode } = useSelector((state: any) => state.player)
+
   const [timer, setTimer] = useState<number | null>(null)
   const [active, setActive] = useState<boolean>(false)
   const [currentStateNum, setCurrentStateNum] = useState<number>(1)
   const [isMouseIn, setIsMouseIn] = useState<boolean>(false)
   // 当前播放状态
-  const [currentState, setCurrentState] = useState<ICurState>({} as ICurState)
+  const [currentState, setCurrentState] = useState<string>('')
   // 播放模式状态对象
-  const stateObj: {
-    [k in string]: () => void
-  } = {
-    1: () => {
-      setCurrentState({
-        position: isMouseIn ? '-93px -344px' : '-66px -344px',
-        text: '单曲循环'
-      })
-    },
-    2: () => {
-      setCurrentState({
-        position: isMouseIn ? '-33px -344px' : '-3px -344px',
-        text: '循环'
-      })
-    },
-    3: () => {
-      setCurrentState({
-        position: isMouseIn ? '-93px -248px' : '-66px -248px',
-        text: '随机'
-      })
-    }
-  }
+
+  const playModeArr = useMemo<Array<string>>(
+    () => ['单曲循环', '循环', '随机'],
+    []
+  )
+
+  const stateObj = useMemo<{ [k in string]: () => void }>(
+    () => ({
+      1: () => {
+        setCurrentState(isMouseIn ? '-93px -344px' : '-66px -344px')
+      },
+      2: () => {
+        setCurrentState(isMouseIn ? '-33px -344px' : '-3px -344px')
+      },
+      3: () => {
+        setCurrentState(isMouseIn ? '-93px -248px' : '-66px -248px')
+      }
+    }),
+    [isMouseIn]
+  )
 
   // 是否显示音量条
   const [isShowVolume, setShowVolume] = useState<boolean>(false)
-  const [volTimer, setVolTimer] = useState<number | null>(null)
   const [currentVolState, setVolState] = useState<string>('')
   const [isInVol, setIsInVol] = useState<boolean>(false)
   // 当前的音量值
@@ -67,17 +69,13 @@ const Ctrl = (props: {
 
   // 切换播放状态 ---> 更新状态
   useEffect(() => {
-    stateObj[currentStateNum]()
-  }, [currentStateNum, isMouseIn])
+    stateObj[playMode]()
+  }, [playMode, isMouseIn])
 
   function handleMode() {
-    setCurrentStateNum((cur) => {
-      if (cur >= Object.keys(stateObj).length) {
-        return 1
-      } else {
-        return ++cur
-      }
-    })
+    playMode >= playModeArr.length
+      ? store.dispatch(changePlayMode(1))
+      : store.dispatch(changePlayMode(playMode + 1))
 
     // 控制播放模式显隐
     delayNone([timer, setTimer, setActive])
@@ -108,7 +106,6 @@ const Ctrl = (props: {
           onClick={() => {
             // 切换音量显隐
             setShowVolume((cur) => !cur)
-            // delayNone([volTimer, setVolTimer, setShowVolume])
           }}
           onMouseEnter={() => {
             setIsInVol(true)
@@ -130,9 +127,9 @@ const Ctrl = (props: {
           onMouseLeave={() => {
             setIsMouseIn(false)
           }}
-          title={currentState.text}
+          title={playModeArr[playMode - 1]}
           style={{
-            backgroundPosition: currentState.position
+            backgroundPosition: currentState
           }}
         >
           播放模式
@@ -148,7 +145,7 @@ const Ctrl = (props: {
             className={`yxz-playbar ${Style['icn-list']}`}
             title="播放列表"
           ></span>
-          <span className={`${Style['text']}`}>8</span>
+          <span className={`${Style['text']}`}>{playSongList.length}</span>
         </div>
         {/* 播放模式tip */}
         <div
@@ -157,7 +154,7 @@ const Ctrl = (props: {
             display: active ? 'block' : 'none'
           }}
         >
-          {currentState.text}
+          {playModeArr[playMode - 1]}
         </div>
         {/* 音量操作盒子 */}
         <div

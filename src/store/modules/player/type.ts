@@ -7,7 +7,7 @@ export interface IPlayer {
   alia: any[]
   pop: number
   st: number
-  rt: string
+  rt: string | null
   fee: number
   v: number
   crbt: any
