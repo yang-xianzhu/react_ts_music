@@ -7,7 +7,7 @@ import { fetchCurrentSongAction } from '@/store/modules/player/player'
 function App() {
   // 获取当前歌曲信息
   useEffect(() => {
-    store.dispatch(fetchCurrentSongAction({ ids: 488249475 }))
+    store.dispatch(fetchCurrentSongAction({ ids: 1965400223 }))
   }, [])
 
   return (

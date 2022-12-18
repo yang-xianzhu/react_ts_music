@@ -36,11 +36,11 @@ const PlayList: FC<IProps> = (props) => {
         <div className={Style['listhd']}>
           <h4>播放列表(8)</h4>
           <a href="javascript:void(0)" className={Style['addall']}>
-            <span></span>
+            <span className={`yxz-playlist ${Style['ico-add']}`}></span>
             收藏全部
           </a>
           <a href="javascript:void(0)" className={Style['clean']}>
-            <span></span>
+            <span className={`yxz-playlist ${Style['ico-clean']}`}></span>
             清除
           </a>
           <p className={Style['song-title']}>{currentSong?.name}</p>
@@ -66,7 +66,27 @@ const PlayList: FC<IProps> = (props) => {
             }}
           ></div>
           {/* left */}
-          <div className={Style['listbdc']}></div>
+          <div className={Style['listbdc']}>
+            <ul className={Style['listbdc-list']}>
+              <li className={Style['item']}>
+                <div className={`yxz-playlist ${Style['playicn']}`}></div>
+                <p className={`yxz-col-2 ${Style['song-title']}`}>必杀技</p>
+                <p className={`${Style['songer']}`}>老虎歌王</p>
+                <p className={`yxz-col-5 ${Style['time']}`}>04:33</p>
+                <p className={`yxz-col-6 yxz-playlist ${Style['ico-src-dis']}`}>
+                  <a href="javascript:;">暂无来源</a>
+                </p>
+              </li>
+              <li className={Style['item']}>
+                <p className={`yxz-col-2 ${Style['song-title']}`}>哪里都是你</p>
+                <p className={`yxz-col-4 ${Style['songer']}`}>队长</p>
+                <p className={`yxz-col-5 ${Style['time']}`}>04:33</p>
+                <p className={`yxz-col-6 yxz-playlist ${Style['ico-src-dis']}`}>
+                  <a href="javascript:;">暂无来源</a>
+                </p>
+              </li>
+            </ul>
+          </div>
           {/* right */}
           <div className={Style['listlyric-container']}>
             <div className={Style['listlyric']} ref={listlyricRef}>

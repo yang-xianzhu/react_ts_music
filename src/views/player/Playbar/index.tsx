@@ -116,6 +116,36 @@ const Playbar: FC = () => {
   function handleSongTitle(state: boolean) {
     setShowSongTitle(state)
   }
+
+  // 设置播放时间和进度条
+  function handleTimeAndPlaybar() {
+    // 获取当前播放时间
+    const curTime = audioRef.current!.currentTime * 1000
+    const progressTime = (curTime / duration) * 100
+
+    // 设置当前播放时间
+    setCurrentTime(curTime)
+    setCurPlayBar(progressTime)
+  }
+
+  // 设置歌词
+  function handlePlayTitle() {
+    const curTime = audioRef.current!.currentTime * 1000
+
+    let index = -1
+    for (let i = 0; i < lyrics.length; i++) {
+      if (lyrics[i].time > curTime) {
+        index = i === lyrics.length - 1 ? i : i - 1
+        break
+      }
+    }
+    // 记录当前播放中的歌词
+    if (index !== lyricsIdx) {
+      store.dispatch(changeCurrentLyricsIdx(index))
+      // console.log('@@@', index)
+      console.log(lyrics[index]?.text)
+    }
+  }
   return (
     <>
       <div
@@ -169,27 +199,10 @@ const Playbar: FC = () => {
           onTimeUpdate={() => {
             // 如果正在拖拽就不更新播放状态
             if (!isSliding) {
-              // 获取当前播放时间
-              const curTime = audioRef.current!.currentTime * 1000
-              const progressTime = (curTime / duration) * 100
-
-              // 设置当前播放时间
-              setCurrentTime(curTime)
-              setCurPlayBar(progressTime)
-
-              let index = -1
-              for (let i = 0; i < lyrics.length; i++) {
-                if (lyrics[i].time > curTime) {
-                  index = i === lyrics.length - 1 ? i : i - 1
-                  break
-                }
-              }
-              // 记录当前播放中的歌词
-              if (index !== lyricsIdx) {
-                store.dispatch(changeCurrentLyricsIdx(index))
-                // console.log('@@@', index)
-                console.log(lyrics[index]?.text)
-              }
+              // 设置播放时间和进度条
+              handleTimeAndPlaybar()
+              // 设置当前歌词
+              handlePlayTitle()
             }
           }}
         />

@@ -44,9 +44,33 @@
   left: 398px;
 }
 
+.addall:hover .ico-add {
+  background-position: -24px -20px;
+}
+
+.addall .ico-add {
+  position: absolute;
+  left: -22px;
+  width: 16px;
+  height: 16px;
+  background-position: -24px 0;
+}
+
 /* 清除 */
 .clean {
   left: 490px;
+}
+
+.clean .ico-clean {
+  position: absolute;
+  left: -22px;
+  width: 13px;
+  height: 16px;
+  background-position: -51px 0;
+}
+
+.clean:hover .ico-clean {
+  background-position: -51px -20px;
 }
 
 /* 关闭 */
@@ -94,13 +118,70 @@
   overflow: hidden;
   height: 100%;
   width: 553px;
-  background: #000;
+  z-index: 3;
+}
+
+.listbdc-list {
+  overflow-y: scroll;
+  height: 100%;
+}
+
+.listbdc-list > .item {
+  position: relative;
+  height: 28px;
+  line-height: 28px;
+  font-size: 12px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.listbdc-list > .item .playicn {
+  left: 10px;
+  width: 10px;
+  height: 13px;
+  background-position: -182px 0;
+}
+
+.listbdc-list > .item * {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.listbdc-list > .item .song-title {
+  text-align: left;
+  color: inherit;
+  left: 30px;
+}
+
+.listbdc-list > .item .songer {
+  left: 385px;
+}
+
+.listbdc-list > .item:hover {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.listbdc-list > .item:hover .time {
+  color: inherit;
+}
+
+.listbdc-list > .item .time {
+  left: 460px;
+}
+
+.listbdc-list > .item .ico-src-dis {
+  right: 8px;
+  width: 14px;
+  height: 14px;
+  background-position: -100px 0;
+  text-indent: -9999px;
 }
 
 .listlyric-container {
   flex: 1;
   position: relative;
-  /* background-color: pink; */
   height: 100%;
 }
 
@@ -111,7 +192,6 @@
   top: 50%;
   transform: translate(-50%, -50%);
   width: 354px;
-  /* background-color: pink; */
   height: 219px;
   z-index: 3;
 }

@@ -47,7 +47,7 @@ const http = {
   post<T = any>(
     url: string,
     data?: object,
-    config?: AxiosRequestConfig
+    config?: T & AxiosRequestConfig
   ): Promise<T> {
     return service.post(url, data, config)
   }

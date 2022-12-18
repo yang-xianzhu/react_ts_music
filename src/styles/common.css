@@ -117,3 +117,29 @@
 .vol-slider .ant-slider-handle::after {
   display: none;
 }
+
+.yxz-col-2,
+.yxz-col-4,
+.yxz-col-5,
+.yxz-col-6 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.yxz-col-2 {
+  width: 256px;
+}
+
+.yxz-col-4 {
+  width: 70px;
+}
+
+.yxz-col-5 {
+  width: 35px;
+  color: #666;
+}
+
+.yxz-col-6 {
+  width: 37px;
+}

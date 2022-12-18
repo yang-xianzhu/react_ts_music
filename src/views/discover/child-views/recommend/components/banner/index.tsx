@@ -95,7 +95,13 @@ function Banner() {
               >
                 下载客户端
               </span>
-              <p>PC 安卓 iPhone WP iPad Mac 六大客户端</p>
+              <p
+                style={{
+                  lineHeight: '30px'
+                }}
+              >
+                PC 安卓 iPhone WP iPad Mac 六大客户端
+              </p>
             </div>
             {/* 左右箭头 */}
             <span
