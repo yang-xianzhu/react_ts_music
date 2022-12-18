@@ -4,7 +4,17 @@
 
 #### 首页
 
+##### 上半部分
+
 ![首页01截图](./src/assets/images/首页01.png)
+
+##### 下半部分
+
+![首页02截图](./src/assets/images/首页02.png)
+
+#### 歌词展示
+
+![歌词展示截图](./src/assets/images/歌词.png)
 
 ### 运行到本地
 
