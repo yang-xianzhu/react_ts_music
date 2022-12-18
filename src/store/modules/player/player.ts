@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import type { IPlayer } from './type'
 import { getLyric } from '@/api/player'
 import { ILyricArr, parseLyric } from '@/utils'
-import store from '@/store'
+import { changeIsPlay } from '@/store/modules/playbar'
 
 interface IPlayState {
   // 当前播放的歌曲
@@ -16,7 +16,7 @@ interface IPlayState {
   playSongList: IPlayer[]
   // 当前播放的歌曲列表的歌曲索引
   playSongIndex: number
-  playMode: number
+  playMode: number // 1.单曲循环 2.循环 3.随机
 }
 
 interface IChangePlaySongList {
@@ -57,10 +57,50 @@ export const fetchCurrentSongAction = createAsyncThunk(
       // 记录当前播放列表的歌曲索引
       dispatch(changCurrentSongIdx(finIndex))
     }
+    // 更新播放状态
+    dispatch(changeIsPlay(true))
     // 获取歌词
-
     getLyric({
       id: params.ids
+    }).then((res) => {
+      const arr = parseLyric(res?.lrc?.lyric)
+      dispatch(changeCurrentLyrics(arr))
+    })
+  }
+)
+
+export const changeMusicAction = createAsyncThunk<void, boolean>(
+  'changeMusic',
+  (type, { dispatch, getState }) => {
+    // 获取当前播放模式
+    const { playMode, playSongIndex, playSongList } = (getState() as any).player
+
+    let newIndex: number = 0
+    switch (playMode) {
+      case 3:
+        // 随机
+        newIndex = Math.floor(Math.random() * playSongList.length)
+        break
+      case 1:
+      // 单曲循环
+
+      case 2:
+        // 循环
+        if (type) {
+          newIndex =
+            playSongIndex + 1 >= playSongList.length ? 0 : playSongIndex + 1
+        } else {
+          newIndex =
+            playSongIndex - 1 < 0 ? playSongList.length - 1 : playSongIndex - 1
+        }
+    }
+    dispatch(changCurrentSongIdx(newIndex))
+    // 每次切换自动播放
+    dispatch(changeIsPlay(true))
+    // 切换歌词
+
+    getLyric({
+      id: playSongList[newIndex].id
     }).then((res) => {
       const arr = parseLyric(res?.lrc?.lyric)
       dispatch(changeCurrentLyrics(arr))
@@ -156,6 +196,93 @@ const initialState: IPlayState = {
   // 当前播放中的歌词
   lyricsIdx: -1,
   playSongList: [
+    {
+      name: '有何不可',
+      id: 167876,
+      pst: 0,
+      t: 0,
+      ar: [
+        {
+          id: 5771,
+          name: '许嵩',
+          tns: [],
+          alias: []
+        }
+      ],
+      alia: [],
+      pop: 100,
+      st: 0,
+      rt: '600902000007916021',
+      fee: 8,
+      v: 67,
+      crbt: null,
+      cf: '',
+      al: {
+        id: 16953,
+        name: '自定义',
+        picUrl:
+          'https://p1.music.126.net/KyBR4ZDYFlzQJE_uyvfjpA==/109951166118671647.jpg',
+        tns: [],
+        pic_str: '109951166118671647',
+        pic: 109951166118671650
+      },
+      dt: 241840,
+      h: {
+        br: 320000,
+        fid: 0,
+        size: 9675799,
+        vd: -58025,
+        sr: 44100
+      },
+      m: {
+        br: 192000,
+        fid: 0,
+        size: 5805497,
+        vd: -55432,
+        sr: 44100
+      },
+      l: {
+        br: 128000,
+        fid: 0,
+        size: 3870346,
+        vd: -53760,
+        sr: 44100
+      },
+      sq: {
+        br: 941672,
+        fid: 0,
+        size: 28466869,
+        vd: -58130,
+        sr: 44100
+      },
+      hr: null,
+      a: null,
+      cd: '1',
+      no: 3,
+      rtUrl: null,
+      ftype: 0,
+      rtUrls: [],
+      djId: 0,
+      copyright: 2,
+      s_id: 0,
+      mark: 8192,
+      originCoverType: 1,
+      originSongSimpleData: null,
+      tagPicList: null,
+      resourceState: true,
+      version: 67,
+      songJumpInfo: null,
+      entertainmentTags: null,
+      awardTags: null,
+      single: 0,
+      noCopyrightRcmd: null,
+      rtype: 0,
+      rurl: null,
+      mst: 9,
+      cp: 22036,
+      mv: 0,
+      publishTime: 1231516800000
+    },
     {
       name: '必殺技 Live',
       id: 1876100097,
@@ -361,6 +488,8 @@ const playerSlice = createSlice({
     // 切换歌曲列表当前播放的歌曲的索引
     changCurrentSongIdx(state, { payload }) {
       state.playSongIndex = payload
+      // 设置当前播放的歌曲
+      state.currentSong = state.playSongList[payload]
     },
     changePlayMode(state, { payload }) {
       state.playMode = payload

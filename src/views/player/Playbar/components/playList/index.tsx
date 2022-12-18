@@ -44,24 +44,23 @@ const PlayList: FC<IProps> = (props) => {
       <div className={Style['playlist']}>
         <div className={Style['listhd']}>
           <h4>播放列表({playSongList.length})</h4>
-          <a href="javascript:void(0)" className={Style['addall']}>
+          <a href="#/" className={Style['addall']}>
             <span className={`yxz-playlist ${Style['ico-add']}`}></span>
             收藏全部
           </a>
-          <a href="javascript:void(0)" className={Style['clean']}>
+          <a href="#/" className={Style['clean']}>
             <span className={`yxz-playlist ${Style['ico-clean']}`}></span>
             清除
           </a>
           <p className={Style['song-title']}>{currentSong?.name}</p>
-          <a
-            href="javascript:void(0)"
+          <span
             className={`yxz-playlist ${Style['close']}`}
             onClick={() => {
               props.handleSongTitle(false)
             }}
           >
             关闭
-          </a>
+          </span>
         </div>
 
         <div className={Style['listbd']}>
@@ -80,7 +79,9 @@ const PlayList: FC<IProps> = (props) => {
               {playSongList.map((v: IPlayer, idx: number) => (
                 <li
                   key={v.id}
-                  className={Style['item']}
+                  className={`${idx === playSongIndex && Style['active']} ${
+                    Style['item']
+                  }`}
                   onClick={() => handleCurSong(v)}
                 >
                   {idx === playSongIndex && (
@@ -96,7 +97,7 @@ const PlayList: FC<IProps> = (props) => {
                   <p
                     className={`yxz-col-6 yxz-playlist ${Style['ico-src-dis']}`}
                   >
-                    <a href="javascript:;">暂无来源</a>
+                    <a href="#/">暂无来源</a>
                   </p>
                 </li>
               ))}

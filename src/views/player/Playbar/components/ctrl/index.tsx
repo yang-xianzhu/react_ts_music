@@ -14,7 +14,6 @@ const Ctrl = (props: {
 
   const [timer, setTimer] = useState<number | null>(null)
   const [active, setActive] = useState<boolean>(false)
-  const [currentStateNum, setCurrentStateNum] = useState<number>(1)
   const [isMouseIn, setIsMouseIn] = useState<boolean>(false)
   // 当前播放状态
   const [currentState, setCurrentState] = useState<string>('')
@@ -117,7 +116,7 @@ const Ctrl = (props: {
           音量
         </span>
         <span
-          className={`yxz-playbar ${Style['play-mode']}`}
+          className={`yxz-playbar`}
           onClick={() => {
             handleMode()
           }}

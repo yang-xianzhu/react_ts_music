@@ -81,6 +81,7 @@
   height: 30px;
   text-indent: -999px;
   background-position: -195px 9px;
+  cursor: pointer;
 }
 
 .listhd .close:hover {
@@ -163,6 +164,10 @@
   background-color: rgba(0, 0, 0, 0.4);
 }
 
+.listbdc-list > .item.active {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
 .listbdc-list > .item:hover .time {
   color: inherit;
 }
@@ -172,7 +177,7 @@
 }
 
 .listbdc-list > .item .ico-src-dis {
-  right: 8px;
+  right: 18px;
   width: 14px;
   height: 14px;
   background-position: -100px 0;

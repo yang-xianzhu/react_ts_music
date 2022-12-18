@@ -1,0 +1,1 @@
+import{r as s,b as e,F as o,j as r}from"./index.5a726afe.js";const t=()=>e(o,{children:[r("div",{style:{backgroundColor:"#C20C0C",height:"5px"}}),r("div",{children:"\u5173\u6CE8"})]}),n=s.exports.memo(t);export{n as default};

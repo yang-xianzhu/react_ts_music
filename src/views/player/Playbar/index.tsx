@@ -1,4 +1,4 @@
-import { memo, useState, useRef, useEffect, FC } from 'react'
+import { memo, useState, useRef, useEffect, FC, useMemo } from 'react'
 import { useSelector } from 'react-redux'
 import Style from './style.module.css'
 import PlayBottom from './components/bottom'
@@ -9,19 +9,23 @@ import Lock from './components/lock'
 import PlayList from './components/playList'
 import { getCurrentSongUrl } from '@/api/player'
 import store from '@/store'
-import { changeCurrentLyricsIdx } from '@/store/modules/player/player'
+import {
+  changeCurrentLyricsIdx,
+  changeMusicAction
+} from '@/store/modules/player/player'
 import { changeIsPlay } from '@/store/modules/playbar'
 
 const Playbar: FC = () => {
+  // console.log('render')
   // 获取当前播放歌曲信息
-  const { currentSong, lyrics, lyricsIdx } = useSelector(
-    (state: any) => state.player
-  )
-
-  const [bottom, setBottom] = useState<string>('0')
+  const { currentSong, lyrics, lyricsIdx, playMode, playSongList } =
+    useSelector((state: any) => state.player)
 
   // 获取当前播放状态
   const { isPlay, isLock } = useSelector((state: any) => state.playbar)
+
+  const [bottom, setBottom] = useState<string>('0')
+
   // 获取音频ref
   const audioRef = useRef<HTMLAudioElement>(null)
   // 当前播放进度条
@@ -39,12 +43,15 @@ const Playbar: FC = () => {
 
   // 侦听播放状态
   useEffect(() => {
-    // console.log('当前的播放状态:', isPlay)
     if (isPlay) {
-      audioRef.current!.play().catch(() => {
-        console.log('播放进去了catch')
-        store.dispatch(changeIsPlay(false))
-      })
+      audioRef
+        .current!.play()
+        .then(() => {
+          store.dispatch(changeIsPlay(true))
+        })
+        .catch(() => {
+          store.dispatch(changeIsPlay(false))
+        })
     } else {
       audioRef.current!.pause()
     }
@@ -55,21 +62,27 @@ const Playbar: FC = () => {
     // 设置音乐播放总时长
     setDuration(currentSong.dt)
     // 获取歌曲、歌词
-    handleCurrentSongUrl(currentSong.id)
+    getCurrentSongUrl({
+      id: currentSong.id
+    }).then((res: any) => {
+      audioRef.current!.src = res.data[0].url
+
+      audioRef
+        .current!.play()
+        .then(() => {
+          console.log('播放成功了')
+        })
+        .catch(() => {
+          console.log('播放失败了')
+          store.dispatch(changeIsPlay(false))
+        })
+    })
   }, [currentSong])
 
   // 设置默认音量
   useEffect(() => {
     audioRef.current!.volume = 0.6
   }, [])
-
-  function handleCurrentSongUrl(id: number) {
-    getCurrentSongUrl({
-      id
-    }).then((res: any) => {
-      audioRef.current!.src = res.data[0].url
-    })
-  }
 
   // 获取当前音乐播放时间
   function getCurrentTime(timer: number) {
@@ -196,6 +209,18 @@ const Playbar: FC = () => {
               handleTimeAndPlaybar()
               // 设置当前歌词
               handlePlayTitle()
+            }
+          }}
+          onEnded={() => {
+            // 歌曲播放完毕
+
+            // 单曲循环状态下 或 播放列表只有一首歌曲时，单曲循环播放
+            if (playMode === 1 || playSongList.length === 1) {
+              audioRef.current!.currentTime = 0
+              audioRef.current!.play()
+            } else {
+              // 正常播放状态
+              store.dispatch(changeMusicAction(true))
             }
           }}
         />
