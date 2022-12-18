@@ -4,7 +4,7 @@
 
 #### 首页
 
-![首页01截图](./src/assets/images/首页 01.png)
+![首页01截图](./src/assets/images/首页01.png)
 
 ### 运行到本地
 
