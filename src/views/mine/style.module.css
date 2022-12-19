@@ -1,0 +1,26 @@
+.pglg {
+  position: relative;
+  width: 807px;
+  height: 268px;
+  margin: 0 auto 0;
+  background: url('@/assets/images/mymusic.png');
+}
+
+.pglg > h2,
+.pglg > a {
+  text-indent: -99999px;
+}
+
+.pglg > a {
+  display: block;
+  position: absolute;
+  left: 482px;
+  top: 202px;
+  width: 167px;
+  height: 45px;
+  background: url('@/assets/images/mymusic.png') no-repeat 0 -99999px;
+}
+
+.pglg > a:hover {
+  background-position: 0 -278px;
+}

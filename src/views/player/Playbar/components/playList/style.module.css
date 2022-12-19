@@ -168,6 +168,10 @@
   background-color: rgba(0, 0, 0, 0.4);
 }
 
+.listbdc-list > .item.active * {
+  color: #fff;
+}
+
 .listbdc-list > .item:hover .time {
   color: inherit;
 }

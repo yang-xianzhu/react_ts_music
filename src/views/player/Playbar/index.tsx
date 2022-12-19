@@ -16,7 +16,6 @@ import {
 import { changeIsPlay } from '@/store/modules/playbar'
 
 const Playbar: FC = () => {
-  // console.log('render')
   // 获取当前播放歌曲信息
   const { currentSong, lyrics, lyricsIdx, playMode, playSongList } =
     useSelector((state: any) => state.player)
