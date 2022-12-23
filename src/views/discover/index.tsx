@@ -3,6 +3,7 @@ import { Suspense } from 'react'
 import Subnav from './components/Subnav'
 import indexStyle from '@/styles/index.module.css'
 import subnavCss from './components/Subnav/style.module.css'
+
 const Discover = () => {
   return (
     <>

@@ -1,4 +1,4 @@
-import { memo, useState, useRef, useEffect, FC, useMemo } from 'react'
+import { memo, useState, useRef, useEffect, FC } from 'react'
 import { useSelector } from 'react-redux'
 import Style from './style.module.css'
 import PlayBottom from './components/bottom'
@@ -72,7 +72,7 @@ const Playbar: FC = () => {
           console.log('播放成功了')
         })
         .catch(() => {
-          console.log('播放失败了')
+          // console.log('播放失败了')
           store.dispatch(changeIsPlay(false))
         })
     })

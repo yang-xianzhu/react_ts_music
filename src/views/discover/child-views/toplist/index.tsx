@@ -1,7 +1,19 @@
+import WithLayoutWrap from '../hooks/WithLayoutWrap'
+import MineList from './components/MineList'
+
 const TopList = () => {
   return (
     <>
-      <h1>排行榜</h1>
+      <WithLayoutWrap>
+        <div
+          style={{
+            display: 'flex'
+          }}
+        >
+          <MineList />
+          <div>right </div>
+        </div>
+      </WithLayoutWrap>
     </>
   )
 }
