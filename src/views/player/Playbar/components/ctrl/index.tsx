@@ -7,7 +7,7 @@ import { changePlayMode } from '@/store/modules/player/player'
 
 const Ctrl = (props: {
   getVol: (val: number) => void
-  handleSongTitle: (state: boolean) => void
+  handleSongTitle: () => void
 }) => {
   // 获取当前播放歌曲信息
   const { playSongList, playMode } = useSelector((state: any) => state.player)
@@ -137,7 +137,7 @@ const Ctrl = (props: {
         <div
           className={`${Style['add']}`}
           onClick={() => {
-            props.handleSongTitle(true)
+            props.handleSongTitle()
           }}
         >
           <span

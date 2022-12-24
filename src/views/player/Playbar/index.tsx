@@ -117,8 +117,8 @@ const Playbar: FC = () => {
   }
 
   // 切换歌词显隐状态
-  function handleSongTitle(state: boolean) {
-    setShowSongTitle(state)
+  function handleSongTitle() {
+    setShowSongTitle((cur) => !cur)
   }
 
   // 设置播放时间和进度条
@@ -169,7 +169,7 @@ const Playbar: FC = () => {
       >
         <div className={`mini-warp ${Style['context']}`}>
           {/* 歌词盒子 */}
-          {isShowSongTitle && <PlayList {...{ handleSongTitle }} />}
+          {<PlayList {...{ handleSongTitle, isShowSongTitle }} />}
           {/* 左侧播放按钮组 */}
           <PlayBottom />
           {/* 中间播放进度条 */}

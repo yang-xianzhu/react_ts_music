@@ -4,6 +4,7 @@ import WithContainer from '@/hooks/WithContainer'
 function Mine() {
   return (
     <>
+      <div style={{ backgroundColor: '#C20C0C', height: '5px' }}></div>
       <WithContainer>
         <div className={Style['pglg']}>
           <h2>登录网易云音乐</h2>

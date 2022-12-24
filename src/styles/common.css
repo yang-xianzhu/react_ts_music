@@ -20,6 +20,18 @@
   font-size: 12px;
 }
 
+.f-weight-700 {
+  font-weight: 700;
+}
+
+.f-weight-900 {
+  font-weight: 900;
+}
+
+.text-indext {
+  text-indent: -99999px;
+}
+
 /* 雪碧图片类 */
 .yxz-sprite {
   background: url('@/assets/images/sprite.png') no-repeat 0 -99999px;
@@ -47,6 +59,10 @@
 
 .yxz-playlist {
   background: url('@/assets/images/playlist.png') no-repeat 0 -99999px;
+}
+
+.yxz-button2 {
+  background: url('@/assets/images/button2.png') no-repeat 0 -99999px;
 }
 
 .foot-img {
@@ -119,6 +135,7 @@
 }
 
 .yxz-col-2,
+.yxz-col-3,
 .yxz-col-4,
 .yxz-col-5,
 .yxz-col-6 {
@@ -129,6 +146,10 @@
 
 .yxz-col-2 {
   width: 256px;
+}
+
+.yxz-col-3 {
+  width: 150px;
 }
 
 .yxz-col-4 {

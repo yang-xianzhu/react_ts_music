@@ -1,3 +1,44 @@
 .minelist-container {
+  padding: 20px 0;
   width: 240px;
+  background: #f9f9f9;
+  border-left: 1px solid #e6e5e5;
+  border-right: 1px solid #e6e5e5;
+}
+
+.minelist-item .title {
+  padding-left: 20px;
+  margin: 12px 0;
+}
+
+.mine {
+  display: flex;
+  font-size: 12px;
+  padding: 10px 0 10px 20px;
+  cursor: pointer;
+}
+
+.active {
+  background: #e6e6e6 !important;
+}
+
+.mine:hover {
+  background: #f4f2f2;
+}
+
+.mine > img {
+  width: 40px;
+  height: 40px;
+}
+
+.mine .dec {
+  display: flex;
+  flex-direction: column;
+  padding: 2px 0;
+  justify-content: space-between;
+  margin-left: 8px;
+}
+
+.mine .dec > span {
+  color: #999;
 }

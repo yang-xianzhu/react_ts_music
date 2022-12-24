@@ -1,0 +1,126 @@
+.img-container {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+}
+
+.img-container > img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 140px;
+  height: 140px;
+}
+
+.cnt {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+  margin-left: 30px;
+}
+
+.cnt .title {
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+
+.user {
+  display: flex;
+  font-size: 12px;
+}
+
+.user > i {
+  display: block;
+  width: 13px;
+  height: 13px;
+  margin-right: 8px;
+  background-position: -18px -682px;
+}
+
+.user .time {
+  margin: 0 8px;
+}
+
+.user .update-time {
+  color: #999;
+}
+
+/* btns */
+.btns {
+  display: flex;
+  margin-top: 30px;
+  height: 31px;
+}
+
+.btns > span {
+  font-size: 12px;
+  height: inherit;
+  line-height: 31px;
+  cursor: pointer;
+}
+
+.btns .play {
+  width: 66px;
+  background-position: right -428px;
+}
+
+.btns .play:hover {
+  background-position: right -510px;
+}
+
+.btns .play:hover > i {
+  background-position: 0 -469px;
+}
+
+.btns .play:hover .ply {
+  background-position: -28px -1622px;
+}
+
+.btns .play > i {
+  position: relative;
+  display: block;
+  padding-left: 30px;
+  width: 61px;
+  height: inherit;
+  line-height: 31px;
+  color: #fff;
+  background-position: 0 -387px;
+}
+
+.btns .ply {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 18px;
+  background-position: 0 -1622px;
+}
+
+.add-play {
+  margin-left: -4px;
+  width: 31px;
+  background-position: 0 -1588px;
+}
+
+.add-play:hover {
+  background-position: -40px -1588px;
+}
+
+.btn-show {
+  position: relative;
+  padding: 0 8px;
+  margin-left: 6px;
+  border: 1px solid #d3d3d3;
+  background: #f1f1f1;
+  border-radius: 4px;
+  text-align: center;
+  min-width: 60px;
+}
+
+.btn-show:hover {
+  background: #fafaf9;
+}

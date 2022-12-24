@@ -73,3 +73,20 @@ export const parseLyric = (lyricString: string) => {
   }
   return lyric
 }
+
+// 解析url参数 ?id=xxx&name=yyy ===> {id:xxx,name:yyy}
+export const transitionUrlParams = (url: string, key?: string) => {
+  const paramsArr = url.slice(1).split('&')
+
+  const paramsObj: {
+    [k in string]: string
+  } = {}
+
+  for (const k of paramsArr) {
+    const [key, val] = k.split('=')
+    paramsObj[key] = val
+  }
+
+  type TParams = typeof paramsObj
+  return key ? paramsObj[key] : (paramsObj as TParams)
+}

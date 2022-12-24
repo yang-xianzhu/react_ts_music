@@ -8,6 +8,7 @@ import { fetchCurrentSongAction } from '@/store/modules/player/player'
 
 interface IProps {
   handleSongTitle: (state: boolean) => void
+  isShowSongTitle: boolean
 }
 
 interface IItem {
@@ -41,7 +42,12 @@ const PlayList: FC<IProps> = (props) => {
 
   return (
     <>
-      <div className={Style['playlist']}>
+      <div
+        className={Style['playlist']}
+        style={{
+          display: props.isShowSongTitle ? 'block' : 'none'
+        }}
+      >
         <div className={Style['listhd']}>
           <h4>播放列表({playSongList.length})</h4>
           <a href="#/" className={Style['addall']}>

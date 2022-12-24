@@ -479,7 +479,7 @@ const playerSlice = createSlice({
       switch (payload.type) {
         case 'add':
           // 头部新增
-          state.playSongList = [payload.data, ...state.playSongList]
+          state.playSongList = [...state.playSongList, payload.data]
           break
         case 'delete':
           break
@@ -491,6 +491,7 @@ const playerSlice = createSlice({
       // 设置当前播放的歌曲
       state.currentSong = state.playSongList[payload]
     },
+    // 切换播放模式
     changePlayMode(state, { payload }) {
       state.playMode = payload
     }

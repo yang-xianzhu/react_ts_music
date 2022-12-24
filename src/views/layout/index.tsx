@@ -7,12 +7,12 @@ import Playbar from '@/views/player/Playbar'
 
 const Layout = () => {
   const { pathname } = useLocation()
+
   return (
     <>
       {/* 头部导航栏 */}
       <Header />
       {/* 一级路由导航栏 */}
-      <div style={{ backgroundColor: '#C20C0C', height: '5px' }}></div>
       <div
         style={{
           background: pathname.includes('/discover') ? '' : '#f5f5f5'

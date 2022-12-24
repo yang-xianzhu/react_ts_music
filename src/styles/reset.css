@@ -127,3 +127,9 @@ template {
   /* 有些浏览器会显示template 不过template标签用的也少，自行取舍。 */
   display: none;
 }
+
+em,
+i {
+  font-style: normal;
+  font-size: inherit;
+}

@@ -1,5 +1,6 @@
 import WithLayoutWrap from '../hooks/WithLayoutWrap'
 import MineList from './components/MineList'
+import MineDetail from './components/MineDetail'
 
 const TopList = () => {
   return (
@@ -11,7 +12,7 @@ const TopList = () => {
           }}
         >
           <MineList />
-          <div>right </div>
+          <MineDetail />
         </div>
       </WithLayoutWrap>
     </>
