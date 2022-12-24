@@ -455,7 +455,7 @@ const initialState: IPlayState = {
   // 当前播放的歌曲列表的歌曲
   playSongIndex: -1,
   // 播放模式
-  playMode: 1 // 1.单曲循环 2.循环 3.随机
+  playMode: 2 // 1.单曲循环 2.循环 3.随机
 }
 
 const playerSlice = createSlice({
@@ -479,7 +479,7 @@ const playerSlice = createSlice({
       switch (payload.type) {
         case 'add':
           // 头部新增
-          state.playSongList = [...state.playSongList, payload.data]
+          state.playSongList = [payload.data, ...state.playSongList]
           break
         case 'delete':
           break

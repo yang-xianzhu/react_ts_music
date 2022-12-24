@@ -1,26 +1,32 @@
 import { FC, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import Style from './style.module.css'
 import { getTopListAll } from '@/api/toplist'
 import { ITopList } from './type'
-import { transitionSamllImg } from '@/utils'
+import { transitionSamllImg, transitionUrlParams } from '@/utils'
 
 const MineList: FC = () => {
   const [topList, setTopList] = useState<ITopList[]>([] as ITopList[])
-  const [curId, setCurId] = useState<number>()
   const push = useNavigate()
+  const search = useLocation().search
+  const [paramsId, setParamsId] = useState<number>(
+    Number(transitionUrlParams(search as unknown as string, 'id') || 0)
+  )
 
   useEffect(() => {
     getTopListAll().then((res) => {
       setTopList(res.list)
-      setCurId(res?.list[0]?.id || 0)
+
+      if (paramsId) return
+      push(`/discover/toplist?id=${res?.list[0]?.id}`)
+      setParamsId(res?.list[0]?.id)
     })
   }, [])
 
   function handleList(id: number) {
-    if (id === curId) return
+    if (id === paramsId) return
     push(`/discover/toplist?id=${id}`)
-    setCurId(id)
+    setParamsId(id)
   }
 
   return (
@@ -30,11 +36,11 @@ const MineList: FC = () => {
           <h2 className={`f-weight-700 ${Style['title']}`}>云音乐特色榜</h2>
           <ul>
             {topList.length > 0
-              ? topList.slice(0, 4).map((v: ITopList) => (
+              ? topList.slice(0, 4).map((v: ITopList, idx: number) => (
                   <li
                     key={v.id}
                     className={`${Style['mine']} ${
-                      v.id === curId ? Style['active'] : ''
+                      v.id === paramsId ? Style['active'] : ''
                     }`}
                     onClick={() => {
                       handleList(v.id)
@@ -62,7 +68,7 @@ const MineList: FC = () => {
                   <li
                     key={v.id}
                     className={`${Style['mine']} ${
-                      v.id === curId ? Style['active'] : ''
+                      v.id === paramsId ? Style['active'] : ''
                     }`}
                     onClick={() => {
                       handleList(v.id)

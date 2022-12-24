@@ -13,10 +13,12 @@ const MineDetail: FC = () => {
 
   useEffect(() => {
     const id = transitionUrlParams(search, 'id')
-    getTopListDetail(Number(id)).then((res) => {
-      console.log('res', res.playlist)
-      setData(res?.playlist || {})
-    })
+    if (id) {
+      getTopListDetail(Number(id)).then((res) => {
+        // console.log('res', res.playlist)
+        setData(res?.playlist || {})
+      })
+    }
   }, [search])
 
   return (

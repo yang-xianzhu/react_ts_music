@@ -32,6 +32,18 @@
   text-indent: -99999px;
 }
 
+.border-left {
+  border-left: 1px solid #d3d3d3;
+}
+
+.underline {
+  cursor: pointer;
+}
+
+.underline:hover {
+  text-decoration: underline;
+}
+
 /* 雪碧图片类 */
 .yxz-sprite {
   background: url('@/assets/images/sprite.png') no-repeat 0 -99999px;
@@ -63,6 +75,10 @@
 
 .yxz-button2 {
   background: url('@/assets/images/button2.png') no-repeat 0 -99999px;
+}
+
+.yxz-table {
+  background: url('@/assets/images/table.png') no-repeat 0 -99999px;
 }
 
 .foot-img {
