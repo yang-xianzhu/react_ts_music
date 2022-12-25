@@ -1,0 +1,160 @@
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-bottom: 8px;
+  height: 42px;
+  line-height: 42px;
+  border-bottom: 2px solid var(--theme-color);
+}
+
+.header > h2 {
+  margin-right: 12px;
+  font-size: 24px;
+  font-weight: normal;
+}
+
+/* 选择分类btn */
+.scree {
+  display: flex;
+  align-items: center;
+  color: #0c73c2;
+  padding: 0 14px;
+  height: 31px;
+  border: 1px solid #d1d1d1;
+  border-radius: 4px;
+  background: #fcfcfc;
+  cursor: pointer;
+}
+
+.scree:hover {
+  background: #fff;
+}
+
+.scree i {
+  margin-right: 4px;
+  font-size: 12px;
+}
+
+.scree em {
+  width: 8px;
+  height: 5px;
+  background-position: -70px -543px;
+}
+
+.tag {
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  color: #fff;
+  padding: 0 11px;
+  font-size: 12px;
+  height: 29px;
+  line-height: 29px;
+  background-position: 0 0;
+  border-radius: 4px;
+}
+
+.cateListBox {
+  display: none;
+  position: absolute;
+  width: 700px;
+  top: 50px;
+  left: -24px;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0px 6px 8px 2px rgba(0, 0, 0, 0.4);
+  border: 1px solid #cececf;
+  z-index: 9;
+}
+
+/* 三角形 */
+.cateListBox::before {
+  content: '';
+  position: absolute;
+  top: -11px;
+  left: 114px;
+  width: 24px;
+  height: 11px;
+  background: url('@/assets/images/iconall.png') no-repeat -48px 0;
+}
+
+.cateListBox .hd {
+  display: flex;
+  align-items: center;
+  height: 57px;
+  font-size: 12px;
+  padding-left: 26px;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.cateListBox .hd > span {
+  display: block;
+  width: 75px;
+  height: 26px;
+  line-height: 26px;
+  background-position: 0 -64px;
+  text-align: center;
+}
+
+.cateListBox .bd {
+  padding-left: 26px;
+}
+
+.cateListBox .bd > li {
+  display: flex;
+  align-items: center;
+}
+
+/* 种类 */
+.species {
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
+  min-width: 72px;
+  font-size: 12px;
+  padding-right: 14px;
+}
+
+.species i {
+  margin: 4px 8px 4px 0;
+  width: 23px;
+  height: 23px;
+  background-position: -20px -735px;
+}
+
+.species-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 15px 0 2px;
+  font-size: 12px;
+  border-left: 1px solid #e6e6e6;
+}
+
+.species-list li {
+  position: relative;
+  margin: 0 12px;
+}
+
+.species-list li span {
+  padding: 2px 6px;
+}
+
+.species-list li span.active {
+  background: #a7a7a7;
+  color: #fff;
+}
+
+.species-list li::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -12px;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 10px;
+  background: #d8d8d8;
+}

@@ -73,6 +73,10 @@
   background: url('@/assets/images/playlist.png') no-repeat 0 -99999px;
 }
 
+.yxz-button {
+  background: url('@/assets/images/button.png') no-repeat 0 -99999px;
+}
+
 .yxz-button2 {
   background: url('@/assets/images/button2.png') no-repeat 0 -99999px;
 }

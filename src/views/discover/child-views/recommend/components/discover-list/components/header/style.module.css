@@ -2,7 +2,7 @@
   position: relative;
   height: 33px;
   padding: 0 10px 0 34px;
-  border-bottom: 2px solid #c10d0c;
+  border-bottom: 2px solid var(--theme-color);
 }
 
 .dot {
@@ -12,7 +12,7 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background-color: #c10d0c;
+  background-color: var(--theme-color);
 }
 
 .dot::after {
