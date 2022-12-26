@@ -1,7 +1,20 @@
-const Djradio = () => {
+import type { FC } from 'react'
+import WithLayoutWrap from '../hooks/WithLayoutWrap'
+import CateList from './components/CateList'
+
+const Djradio: FC = () => {
   return (
     <>
-      <h1>主播电台</h1>
+      <WithLayoutWrap>
+        <div
+          className="border-left border-right"
+          style={{
+            padding: '40px'
+          }}
+        >
+          <CateList />
+        </div>
+      </WithLayoutWrap>
     </>
   )
 }

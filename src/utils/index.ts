@@ -90,3 +90,11 @@ export const transitionUrlParams = (url: string, key?: string) => {
   type TParams = typeof paramsObj
   return key ? paramsObj[key] : (paramsObj as TParams)
 }
+
+// 带有动画返回顶部函数
+export const backTopTransiton = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  })
+}

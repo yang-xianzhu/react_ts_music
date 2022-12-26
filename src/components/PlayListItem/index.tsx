@@ -6,6 +6,7 @@ import { getTopPlayList } from '@/api/toplist'
 import type { IPlayListTop } from '@/api/toplist'
 import type { Playlist } from './type'
 import {
+  backTopTransiton,
   numberTransition,
   transitionSamllImg,
   transitionUrlParams
@@ -130,6 +131,8 @@ const PlayListItem: FC = () => {
         pageSize={35}
         current={curPage}
         onChange={(page, pageSize) => {
+          // 返回顶部
+          backTopTransiton()
           const offset = page === 1 ? 0 : (page - 1) * pageSize
 
           const curCat = decodeURI(

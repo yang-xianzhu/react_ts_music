@@ -22,10 +22,6 @@ const PlayList: FC<IProps> = (props) => {
   const { lyrics, lyricsIdx, currentSong, playSongList, playSongIndex } =
     useSelector((state: any) => state.player)
 
-  // useEffect(() => {
-  //   console.log(playSongList)
-  // }, [])
-
   // 匹配当前播放的歌词
   useEffect(() => {
     if (lyricsIdx * 32 - 32 * 3 <= 0) return
@@ -115,7 +111,7 @@ const PlayList: FC<IProps> = (props) => {
               {lyrics?.map((v: IItem, idx: number) => (
                 <p
                   key={idx}
-                  className={`${lyricsIdx === idx && Style['active']}`}
+                  className={`${lyricsIdx === idx ? Style['active'] : ''}`}
                 >
                   {v.text}
                 </p>

@@ -28,6 +28,7 @@ const MyPagination: FC<IPagination> = (props) => {
     const pageNumArrAll: Array<number> = new Array(Math.floor(total / pageSize))
       .fill(1)
       .map((_: number, idx: number) => ++idx)
+
     if (pageNumArrAll.length <= 10) {
       pageNumArr = pageNumArrAll
       return

@@ -97,6 +97,14 @@
   background: url('@/assets/images/table.png') no-repeat 0 -99999px;
 }
 
+.yxz-radio_bg {
+  background: url('@/assets/images/radio_bg.png') no-repeat 0 -99999px;
+}
+
+.yxz-radio_slide {
+  background: url('@/assets/images/radio_slide.png') no-repeat 0 -99999px;
+}
+
 .foot-img {
   background: url('@/assets/images/foot_enter.png') no-repeat 0 -99999px;
   background-size: 220px 220px;
