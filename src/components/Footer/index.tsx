@@ -4,31 +4,31 @@ import type { IFooterList } from './type'
 
 const list: IFooterList[] = [
   {
-    to: 'https://developer.music.163.com/st/developer',
+    to: '#/',
     text: '音乐开放平台'
   },
   {
-    to: 'https://developer.music.163.com/st/developer',
+    to: '#/',
     text: '云村交易所'
   },
   {
-    to: 'https://developer.music.163.com/st/developer',
+    to: '#/',
     text: 'Amped Studio'
   },
   {
-    to: 'https://developer.music.163.com/st/developer',
+    to: '#/',
     text: '用户认证'
   },
   {
-    to: 'https://developer.music.163.com/st/developer',
+    to: '#/',
     text: '独立音乐人'
   },
   {
-    to: 'https://developer.music.163.com/st/developer',
+    to: '#/',
     text: '赞赏'
   },
   {
-    to: 'https://developer.music.163.com/st/developer',
+    to: '#/',
     text: '视频激励'
   }
 ]

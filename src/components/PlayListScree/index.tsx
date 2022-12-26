@@ -73,7 +73,7 @@ const PlayListScree: FC = () => {
             setIsShowcateListBox((cur) => !cur)
           }}
         >
-          <i>选择分类</i>
+          <i className="no-select">选择分类</i>
           <em className="yxz-icon"></em>
         </div>
         <p className={`yxz-button ${Style['tag']}`}>

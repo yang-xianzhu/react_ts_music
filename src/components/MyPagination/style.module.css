@@ -1,0 +1,68 @@
+.page {
+  display: flex;
+  align-items: center;
+  height: 26px;
+  font-size: 12px;
+}
+
+.page .btn {
+  height: 26px;
+  line-height: 26px;
+  color: #333;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.page .btn.disable {
+  color: #cacaca;
+  cursor: default;
+}
+
+.prev {
+  margin-right: 6px;
+  padding: 0 10px 0 22px;
+  /* background-position: 0 -620px; 禁用状态*/
+  background-position: 0 -560px;
+}
+
+.prev:hover {
+  background-position: 0 -590px;
+}
+
+.next {
+  margin-left: 6px;
+  padding: 0 22px 0 10px;
+  background-position: -75px -560px;
+}
+
+.next:hover {
+  background-position: -75px -590px;
+}
+
+.page-num {
+  text-align: center;
+  height: 24px;
+  width: 24px;
+  line-height: 23px;
+  border-radius: 2px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.page-num:hover {
+  border-color: #666;
+}
+
+.page-num:nth-child(n + 2) {
+  margin-left: 6px;
+}
+
+.page-num.seleted {
+  background-position: 0 -650px;
+  border-color: #a2161b;
+  color: #fff;
+  cursor: default;
+}

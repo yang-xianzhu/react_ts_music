@@ -10,7 +10,7 @@ import {
   transitionSamllImg,
   transitionUrlParams
 } from '@/utils'
-import { Pagination } from 'antd'
+import MyPagination from '@/components/MyPagination'
 
 const PlayListItem: FC = () => {
   const push = useNavigate()
@@ -43,10 +43,6 @@ const PlayListItem: FC = () => {
     }))
     // 重置当前页数
     setCurrentPage(1)
-    console.log(
-      '变化了',
-      decodeURI(transitionUrlParams(routeParams.search, 'cat') as string)
-    )
   }, [decodeURI(transitionUrlParams(routeParams.search, 'cat') as string)])
 
   useEffect(() => {
@@ -57,7 +53,6 @@ const PlayListItem: FC = () => {
 
     getList({
       ...params,
-
       offset: curOffset,
       cat: currentCat
     })
@@ -68,7 +63,7 @@ const PlayListItem: FC = () => {
     getTopPlayList(data).then((res) => {
       //   console.log('res', res)
       setList(res?.playlists)
-      if (total) return
+
       setTotal(res?.total)
     })
   }
@@ -124,12 +119,16 @@ const PlayListItem: FC = () => {
             ))
           : null}
       </ul>
-      <Pagination
-        style={{ marginTop: '16px', textAlign: 'center' }}
-        current={curPage}
+
+      <MyPagination
+        style={{
+          marginTop: '32px',
+          display: 'flex',
+          justifyContent: 'center'
+        }}
         total={total}
         pageSize={35}
-        showSizeChanger={false}
+        current={curPage}
         onChange={(page, pageSize) => {
           const offset = page === 1 ? 0 : (page - 1) * pageSize
 

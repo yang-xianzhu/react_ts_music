@@ -44,6 +44,18 @@
   text-decoration: underline;
 }
 
+.no-select {
+  /* 禁止选中文本 */
+  /* 火狐 */
+  -moz-user-select: none;
+  /* Safari 和 欧朋 */
+  -webkit-user-select: none;
+  /* IE10+ and Edge */
+  -ms-user-select: none;
+  /* Standard syntax 标准语法(谷歌) */
+  user-select: none;
+}
+
 /* 雪碧图片类 */
 .yxz-sprite {
   background: url('@/assets/images/sprite.png') no-repeat 0 -99999px;
