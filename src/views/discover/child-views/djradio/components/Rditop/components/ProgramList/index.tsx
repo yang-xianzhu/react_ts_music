@@ -54,18 +54,35 @@ const ProgramList: FC = () => {
                   />
                 </div>
                 <div className={Style['cnt']}>
-                  <p title="" className={`f-thide underline ${Style['text']}`}>
+                  <p
+                    title={v.program.name}
+                    className={`f-thide underline ${Style['text']}`}
+                  >
                     {v.program.name}
                   </p>
                   <span
-                    title=""
+                    title={v.program.radio.name}
                     className={`f-thide underline ${Style['dec']}`}
                   >
                     {v.program.radio.name}
                   </span>
                 </div>
                 <div className={`yxz-table ${Style['progress']}`}>
-                  <div></div>
+                  {/* 当前进度 */}
+                  <i
+                    className="yxz-table"
+                    style={{
+                      width: `${v.score / 1000 > 100 ? 100 : v.score / 1000}%`
+                    }}
+                  >
+                    <i
+                      className="yxz-table"
+                      style={{
+                        width: '95%',
+                        backgroundPosition: '0 -304px'
+                      }}
+                    ></i>
+                  </i>
                 </div>
               </li>
             ))

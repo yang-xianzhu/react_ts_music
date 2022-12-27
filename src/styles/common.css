@@ -73,6 +73,14 @@
   background: url('@/assets/images/playbar.png') no-repeat 0 -99999px;
 }
 
+.yxz-icon2 {
+  background: url('@/assets/images/icon2.png') no-repeat 0 -99999px;
+}
+
+.yxz-tip {
+  background: url('@/assets/images/tip.png') no-repeat;
+}
+
 .yxz-startbar {
   background: url('@/assets/images/statbar.png') no-repeat 0 -99999px;
 }

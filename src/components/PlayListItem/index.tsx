@@ -131,8 +131,6 @@ const PlayListItem: FC = () => {
         pageSize={35}
         current={curPage}
         onChange={(page, pageSize) => {
-          // 返回顶部
-          backTopTransiton()
           const offset = page === 1 ? 0 : (page - 1) * pageSize
 
           const curCat = decodeURI(
@@ -148,6 +146,8 @@ const PlayListItem: FC = () => {
           }
           setParams(currentParams)
           if (page !== currentPage) {
+            // 返回顶部
+            backTopTransiton()
             setCurrentPage(page)
           }
         }}

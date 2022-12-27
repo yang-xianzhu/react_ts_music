@@ -12,8 +12,16 @@ const Recomment = lazy(() => import('@/views/discover/child-views/recommend'))
 const TopList = lazy(() => import('@/views/discover/child-views/toplist'))
 const PlayList = lazy(() => import('@/views/discover/child-views/playlist'))
 const Djradio = lazy(() => import('@/views/discover/child-views/djradio'))
-const Artist = lazy(() => import('@/views/discover/child-views/djradio'))
+const Artist = lazy(() => import('@/views/discover/child-views/artist/index'))
 const Album = lazy(() => import('@/views/discover/child-views/album'))
+// 推荐节目
+const DjRadioRecommend = lazy(
+  () => import('@/views/discover/child-views/djradio/child-views/recommend')
+)
+// 节目排行榜
+const RecommendRank = lazy(
+  () => import('@/views/discover/child-views/djradio/child-views/rank')
+)
 
 const routes: RouteObject[] = [
   {
@@ -29,6 +37,8 @@ const routes: RouteObject[] = [
       { path: '/discover/toplist', element: <TopList /> },
       { path: '/discover/playlist', element: <PlayList /> },
       { path: '/discover/djradio', element: <Djradio /> },
+      { path: '/discover/djradio/recommend', element: <DjRadioRecommend /> },
+      { path: '/discover/djradio/rank', element: <RecommendRank /> },
       { path: '/discover/artist', element: <Artist /> },
       { path: '/discover/album', element: <Album /> }
     ]

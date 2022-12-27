@@ -1,5 +1,49 @@
+.header {
+  position: relative;
+  display: flex;
+  height: 42px;
+  border-bottom: 2px solid #c20c0c;
+}
+
+.header > h2 {
+  font-size: 24px;
+  font-weight: normal;
+}
+
+.header > em {
+  color: #999;
+  font-size: 12px;
+  margin: 13px 0 0 10px;
+}
+
+.header .info {
+  position: absolute;
+  bottom: 9px;
+  right: 0;
+  width: 18px;
+  height: 18px;
+  background-position: 0 -50px;
+  cursor: pointer;
+}
+
+.header .info:hover .tip {
+  display: block;
+}
+
+.header .tip {
+  display: none;
+  position: absolute;
+  top: 23px;
+  right: -30px;
+  width: 323px;
+  font-size: 12px;
+  padding: 24px 19px 19px 19px;
+  line-height: 20px;
+  z-index: 9999;
+  cursor: default;
+}
+
 .list {
-  height: 601px;
   border: 1px solid #e2e2e2;
   border-top: none;
 }
@@ -75,24 +119,24 @@
 
 .cnt {
   font-size: 12px;
-  width: 208px;
+  width: 304px;
+  color: #333;
 }
 
-.cnt .text {
-  margin-bottom: 6px;
-}
-
-.cnt .dec {
-  display: block;
-  color: #999;
-  width: 208px;
+.artist {
+  margin: 0 10px;
+  width: 176px;
+  color: #666;
+  font-size: 12px;
 }
 
 /* 进度 */
 .progress {
   overflow: hidden;
-
-  position: relative;
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  transform: translateY(-50%);
   height: 8px;
   width: 100px;
   background-position: 0 -240px;
@@ -109,4 +153,19 @@
   display: block;
   overflow: hidden;
   background-position: right -318px;
+}
+
+.tag {
+  margin-right: 80px;
+  padding: 1px 6px;
+  border: 1px solid #999;
+  color: #999;
+  vertical-align: middle;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.tag:hover {
+  border-color: #666;
+  color: #666;
 }

@@ -3,7 +3,7 @@ import type { IHeaderInfo } from './type'
 import headerStyle from './style.module.css'
 
 const Header: FC<IHeaderInfo> = (props) => {
-  const { infos, title } = props
+  const { infos, title, onClick = () => {} } = props
   return (
     <>
       <div className={headerStyle['header']}>
@@ -13,7 +13,12 @@ const Header: FC<IHeaderInfo> = (props) => {
         {infos && infos.length > 0 && (
           <ul>
             {infos.map((v) => (
-              <li key={v.text}>
+              <li
+                key={v.text}
+                onClick={() => {
+                  onClick(v)
+                }}
+              >
                 <span>{v.text}</span>
               </li>
             ))}
