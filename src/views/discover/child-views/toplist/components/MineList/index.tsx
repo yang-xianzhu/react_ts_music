@@ -13,7 +13,7 @@ const MineList: FC = () => {
     Number(transitionUrlParams(search as unknown as string, 'id') || 0)
   )
 
-  useEffect(() => {
+  function getData() {
     getTopListAll().then((res) => {
       setTopList(res.list)
 
@@ -21,6 +21,10 @@ const MineList: FC = () => {
       push(`/discover/toplist?id=${res?.list[0]?.id}`)
       setParamsId(res?.list[0]?.id)
     })
+  }
+
+  useEffect(() => {
+    getData()
   }, [])
 
   function handleList(id: number) {

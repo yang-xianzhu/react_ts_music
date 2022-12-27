@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.rditop {
+  flex: 1;
+}
+
+.rditop:nth-child(2) {
+  margin-left: 50px;
+}

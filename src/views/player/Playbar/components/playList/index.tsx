@@ -54,7 +54,9 @@ const PlayList: FC<IProps> = (props) => {
             <span className={`yxz-playlist ${Style['ico-clean']}`}></span>
             清除
           </a>
-          <p className={Style['song-title']}>{currentSong?.name}</p>
+          <p className={`f-thide ${Style['song-title']}`}>
+            {currentSong?.name}
+          </p>
           <span
             className={`yxz-playlist ${Style['close']}`}
             onClick={() => {

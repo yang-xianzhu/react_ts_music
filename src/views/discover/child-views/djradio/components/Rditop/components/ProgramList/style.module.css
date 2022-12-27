@@ -1,0 +1,96 @@
+.list {
+  height: 601px;
+  border: 1px solid #e2e2e2;
+  border-top: none;
+}
+
+.list li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  padding: 10px 0;
+  background: #fff;
+}
+
+.list li:hover {
+  background: #eee;
+}
+
+.list li:nth-child(2n) {
+  background: #f7f7f7;
+}
+
+.rank {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 47px;
+  margin: 6px 0 0 0;
+  text-align: center;
+}
+
+.rnk {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+
+.rnk .icon {
+  margin: -1px 2px 0 0;
+  width: 6px;
+  height: 6px;
+  background-color: pink;
+}
+
+.list li:hover .img-box .play {
+  display: block;
+}
+
+.img-box {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+.img-box .play {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 22px;
+  height: 22px;
+  background-position: 0 -85px;
+  text-indent: -99999px;
+}
+
+.img-box > img {
+  width: inherit;
+  height: inherit;
+}
+
+.cnt {
+  font-size: 12px;
+  width: 208px;
+}
+
+.cnt .text {
+  margin-bottom: 6px;
+}
+
+.cnt .dec {
+  display: block;
+  color: #999;
+  width: 208px;
+}
+
+/* 进度 */
+.progress {
+  height: 8px;
+  width: 100px;
+  background-position: 0 -240px;
+}

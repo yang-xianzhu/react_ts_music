@@ -91,7 +91,7 @@ const CateList: FC = () => {
                 style={{
                   backgroundPosition: currentIdx === ++idx ? '-30px 0' : '0 0'
                 }}
-                onClick={() => handleCurrentIdx(idx++)}
+                onClick={() => handleCurrentIdx(idx)}
               ></li>
             ))}
         </ol>

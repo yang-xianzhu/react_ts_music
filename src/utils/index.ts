@@ -98,3 +98,7 @@ export const backTopTransiton = () => {
     behavior: 'smooth'
   })
 }
+
+// 补0
+export const zeroFilling = (target: number | string) =>
+  String(target).padStart(2, '0')

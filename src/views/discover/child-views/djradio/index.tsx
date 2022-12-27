@@ -1,6 +1,7 @@
 import type { FC } from 'react'
 import WithLayoutWrap from '../hooks/WithLayoutWrap'
 import CateList from './components/CateList'
+import Rditop from './components/Rditop'
 
 const Djradio: FC = () => {
   return (
@@ -13,6 +14,7 @@ const Djradio: FC = () => {
           }}
         >
           <CateList />
+          <Rditop />
         </div>
       </WithLayoutWrap>
     </>

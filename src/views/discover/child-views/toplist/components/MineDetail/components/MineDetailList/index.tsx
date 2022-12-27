@@ -44,7 +44,7 @@ const MineDetailList: FC<IProps> = (props) => {
                 <div
                   className={Style['top-list']}
                   style={{
-                    background: ++idx === 2 ? '#fff' : '#f7f7f7'
+                    background: idx + 1 === 2 ? '#fff' : '#f7f7f7'
                   }}
                   key={v.id}
                 >
@@ -126,7 +126,7 @@ const MineDetailList: FC<IProps> = (props) => {
               <div className={`${Style['time']}`}>{transitionTimer(v.dt)}</div>
               <div className={`f-thide ${Style['songer']}`}>
                 {v?.ar?.map((arItem, index: number) => (
-                  <span key={arItem.id} className="underline">
+                  <span key={index} className="underline">
                     {arItem.name}
                     {index !== v?.ar?.length - 1 && '/'}
                   </span>
