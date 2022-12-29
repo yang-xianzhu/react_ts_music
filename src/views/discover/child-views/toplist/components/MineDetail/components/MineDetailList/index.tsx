@@ -49,7 +49,7 @@ const MineDetailList: FC<IProps> = (props) => {
                   key={v.id}
                 >
                   <div className={`${Style['index']}`}>
-                    <em>{idx}</em>
+                    <em>{idx + 1}</em>
                     <span className={`yxz-icon ${Style['icon']}`}></span>
                   </div>
                   <div className={`${Style['title']}`}>

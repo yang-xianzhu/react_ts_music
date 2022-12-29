@@ -22,3 +22,11 @@ export const getDjProgramToplist = (params?: IHttp) =>
       ? `/dj/program/toplist?limit=${params.limit}`
       : `/dj/program/toplist`
   )
+
+//   根据类型获取电台数据
+export const getTypeRecommend = (params: { type: number; limit?: number }) =>
+  http.get(
+    params?.limit
+      ? `/dj/recommend/type?type=${params.type}&limit=${params.limit}`
+      : `/dj/recommend/type?type=${params.type}`
+  )

@@ -89,7 +89,7 @@ const MyPagination: FC<IPagination> = (props) => {
       <div style={style} className={Style['page']}>
         <span
           className={`yxz-button ${Style['btn']} ${Style['prev']} ${
-            current === 1 && Style['disable']
+            current === 1 ? Style['disable'] : ''
           }`}
           style={{
             backgroundPosition: current === 1 ? '0 -620px' : '0 -560px'
@@ -119,7 +119,7 @@ const MyPagination: FC<IPagination> = (props) => {
             <span
               key={idx}
               className={`yxz-button ${Style['page-num']} ${
-                current === v && Style['seleted']
+                current === v ? Style['seleted'] : ''
               }`}
               onClick={() => onChange(v, pageSize)}
             >
