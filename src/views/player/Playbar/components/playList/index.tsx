@@ -22,14 +22,23 @@ const PlayList: FC<IProps> = (props) => {
   const { lyrics, lyricsIdx, currentSong, playSongList, playSongIndex } =
     useSelector((state: any) => state.player)
 
+  function handleScrollTop(currentTop: number = 0) {
+    listlyricRef.current!.scrollTo({
+      top: currentTop,
+      behavior: 'smooth'
+    })
+  }
+
   // 匹配当前播放的歌词
   useEffect(() => {
     if (lyricsIdx * 32 - 32 * 3 <= 0) return
-    listlyricRef.current!.scrollTo({
-      top: lyricsIdx * 32 - 32 * 3,
-      behavior: 'smooth'
-    })
+
+    handleScrollTop(lyricsIdx * 32 - 32 * 3)
   }, [lyricsIdx])
+
+  useEffect(() => {
+    handleScrollTop()
+  }, [currentSong])
 
   // 切换当前歌曲
   function handleCurSong(item: IPlayer) {

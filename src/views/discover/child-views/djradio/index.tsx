@@ -4,6 +4,7 @@ import WithLayoutWrap from '../hooks/WithLayoutWrap'
 import CateList from './components/CateList'
 import Rditop from './components/Rditop'
 import Rdimore from './components/Rdimore'
+import ExcellentDj from './components/ExcellentDj'
 import { transitionUrlParams } from '@/utils'
 
 const Djradio: FC = () => {
@@ -15,7 +16,11 @@ const Djradio: FC = () => {
     return !type
   }, [search])
 
-  // console.log('type', isShowRdimore)
+  const currentId = useMemo(() => {
+    const id = transitionUrlParams(search, 'id')
+    return id ? Number(id) : undefined
+  }, [search])
+
   return (
     <>
       <WithLayoutWrap>
@@ -70,7 +75,18 @@ const Djradio: FC = () => {
               />
             </div>
           ) : (
-            <>显示优秀电台+电台排行榜</>
+            <>
+              <div
+                style={{
+                  marginTop: '30px'
+                }}
+              >
+                {/* 优秀电台 */}
+                <ExcellentDj currentId={currentId} />
+                {/* 电台排行榜 */}
+                电台排行榜
+              </div>
+            </>
           )}
         </div>
       </WithLayoutWrap>

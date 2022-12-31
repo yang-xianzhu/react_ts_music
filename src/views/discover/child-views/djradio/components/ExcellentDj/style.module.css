@@ -1,0 +1,38 @@
+.head {
+  height: 42px;
+  border-bottom: 2px solid var(--theme-color);
+}
+
+.head > h3 {
+  font-size: 24px;
+  font-weight: normal;
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.list li {
+  width: 150px;
+}
+
+.list li > img {
+  width: inherit;
+  height: 150px;
+}
+
+.list li h3 {
+  margin: 13px 0 6px;
+  line-height: 16px;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.list li span {
+  display: block;
+  width: inherit;
+  color: #999;
+  font-size: 12px;
+}
