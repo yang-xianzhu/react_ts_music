@@ -1,0 +1,101 @@
+.head {
+  display: flex;
+  justify-content: space-between;
+  height: 42px;
+  border-bottom: 2px solid var(--theme-color);
+}
+
+.head > h3 {
+  font-size: 24px;
+  font-weight: normal;
+}
+
+.change {
+  margin-top: 12px;
+  font-size: 12px;
+}
+
+.change span:nth-child(1) {
+  position: relative;
+  margin-right: 12px;
+}
+
+.change span.active {
+  color: var(--theme-color);
+}
+
+.change span:nth-child(1)::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -12px;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 12px;
+  background: #c7c7c7;
+}
+
+.change span:nth-child(2) {
+  margin-left: 12px;
+}
+
+.rdilist {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.rdilist > li {
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+  width: 46%;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.rdilist > li:nth-child(2n) {
+  margin-left: 4%;
+}
+
+.rdilist .img {
+  width: 120px;
+  height: 120px;
+  cursor: pointer;
+}
+
+.rdilist .img > img {
+  width: inherit;
+  height: inherit;
+}
+
+.cnt {
+  margin-left: 40px;
+  width: 100%;
+}
+
+.cnt > h3 {
+  font-size: 18px;
+  height: 64px;
+  line-height: 64px;
+}
+
+.note {
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.note > i {
+  margin-right: 4px;
+  width: 14px;
+  height: 15px;
+  background-position: -50px -300px;
+}
+
+.note > p {
+  color: #333;
+  font-size: 12px;
+}
+
+.fc {
+  font-size: 12px;
+  color: #999;
+}

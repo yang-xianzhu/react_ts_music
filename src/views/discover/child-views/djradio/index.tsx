@@ -1,14 +1,14 @@
 import { FC, useMemo } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import WithLayoutWrap from '../hooks/WithLayoutWrap'
 import CateList from './components/CateList'
 import Rditop from './components/Rditop'
 import Rdimore from './components/Rdimore'
 import ExcellentDj from './components/ExcellentDj'
+import DjList from './components/DjList'
 import { transitionUrlParams } from '@/utils'
 
 const Djradio: FC = () => {
-  const push = useLocation()
   const search = useLocation().search
 
   const isShowRdimore = useMemo(() => {
@@ -84,7 +84,7 @@ const Djradio: FC = () => {
                 {/* 优秀电台 */}
                 <ExcellentDj currentId={currentId} />
                 {/* 电台排行榜 */}
-                电台排行榜
+                <DjList currentId={currentId} />
               </div>
             </>
           )}

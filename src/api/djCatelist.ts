@@ -23,10 +23,19 @@ export const getDjProgramToplist = (params?: IHttp) =>
       : `/dj/program/toplist`
   )
 
-//   根据类型获取电台数据
+// 根据类型获取电台数据
 export const getTypeRecommend = (params: { type: number; limit?: number }) =>
   http.get(
     params?.limit
       ? `/dj/recommend/type?type=${params.type}&limit=${params.limit}`
       : `/dj/recommend/type?type=${params.type}`
   )
+
+interface TDjRadio {
+  cateId: string
+  limit: number
+  offset: number
+}
+// 获取电台排行榜数据
+export const getDjRadio = ({ cateId, limit, offset = 0 }: TDjRadio) =>
+  http.get(`/dj/radio/hot?cateId=${cateId}&limit=${limit}&offset=${offset}`)
