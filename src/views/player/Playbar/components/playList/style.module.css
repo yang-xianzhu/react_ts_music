@@ -7,6 +7,7 @@
   width: 986px;
   height: 301px;
   background: #000;
+  border-radius: 6px 6px 0 0;
 }
 
 .listhd {

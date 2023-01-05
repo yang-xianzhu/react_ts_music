@@ -1,4 +1,4 @@
-import type { FC } from 'react'
+import { FC, useMemo } from 'react'
 import { memo } from 'react'
 import Style from './style.module.css'
 
@@ -20,12 +20,17 @@ const MyPagination: FC<IPagination> = (props) => {
   } = props
 
   // 部分展示页码数组
-
   let pageNumArr: Array<number> = []
+  const length = Math.floor(total / pageSize)
 
+  // 是否只有一页
+  const isOnePage = useMemo(
+    () => current === length || length === 0,
+    [current, total, pageSize]
+  )
   function handlePageNumArr() {
     // 完整页码数组
-    const pageNumArrAll: Array<number> = new Array(Math.floor(total / pageSize))
+    const pageNumArrAll: Array<number> = new Array(length === 0 ? 1 : length)
       .fill(1)
       .map((_: number, idx: number) => ++idx)
 
@@ -130,16 +135,13 @@ const MyPagination: FC<IPagination> = (props) => {
         {/* 页码end */}
         <span
           className={`yxz-button ${Style['btn']} ${Style['next']} ${
-            current === Math.floor(total / pageSize) && Style['disable']
+            isOnePage && Style['disable']
           }`}
           style={{
-            backgroundPosition:
-              current === Math.floor(total / pageSize)
-                ? '-75px -620px'
-                : '-75px -560px'
+            backgroundPosition: isOnePage ? '-75px -620px' : '-75px -560px'
           }}
           onClick={() => {
-            if (current === Math.floor(total / pageSize)) {
+            if (isOnePage) {
               return
             }
             onChange(current + 1, pageSize)

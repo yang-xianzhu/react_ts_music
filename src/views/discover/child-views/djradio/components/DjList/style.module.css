@@ -59,6 +59,7 @@
 .rdilist .img {
   width: 120px;
   height: 120px;
+  margin-right: 40px;
   cursor: pointer;
 }
 
@@ -68,11 +69,11 @@
 }
 
 .cnt {
-  margin-left: 40px;
-  width: 100%;
+  flex: 1;
 }
 
 .cnt > h3 {
+  width: 80%;
   font-size: 18px;
   height: 64px;
   line-height: 64px;

@@ -1,7 +1,11 @@
 import { FC, memo, useEffect, useMemo, useState } from 'react'
 import Style from './style.module.css'
 import { useNavigate, useLocation } from 'react-router-dom'
-import { transitionSamllImg, transitionUrlParams } from '@/utils'
+import {
+  backTopTransiton,
+  transitionSamllImg,
+  transitionUrlParams
+} from '@/utils'
 import { getDjRadio } from '@/api/djCatelist'
 import MyPagination from '@/components/MyPagination'
 import type { TListData } from './type'
@@ -17,6 +21,7 @@ const DjList: FC<IProps> = ({ currentId }) => {
   const [list, setList] = useState([] as TListData[])
 
   const [total, setTotal] = useState<number>(0)
+  const [currentPage, setCurrentPage] = useState<number>(1)
 
   const currentOrder = useMemo(() => {
     return transitionUrlParams(search, 'order') || '0'
@@ -25,14 +30,13 @@ const DjList: FC<IProps> = ({ currentId }) => {
   useEffect(() => {
     getDjRadio({
       cateId: String(currentId),
-      limit: 32,
-      offset: 0
+      limit: 34,
+      offset: (currentPage - 1) * 34
     }).then((res) => {
       setList(res?.djRadios || [])
       setTotal(res?.count)
-      console.log(res)
     })
-  }, [currentId])
+  }, [currentId, currentPage])
 
   function handleType(order: number) {
     push(`/discover/djradio/?id=3&type=category&order=${order}&_hash=allradios`)
@@ -78,7 +82,7 @@ const DjList: FC<IProps> = ({ currentId }) => {
                   />
                 </div>
                 <div className={Style['cnt']}>
-                  <h3 className="underline">{v.name}</h3>
+                  <h3 className="underline f-thide">{v.name}</h3>
                   <div className={Style['note']}>
                     <i className="yxz-icon"></i>
                     <p className="underline">{v.dj.nickname}</p>
@@ -98,9 +102,12 @@ const DjList: FC<IProps> = ({ currentId }) => {
             justifyContent: 'center'
           }}
           total={total}
-          pageSize={32}
-          current={1}
-          onChange={(page, pageSize) => {}}
+          pageSize={34}
+          current={currentPage}
+          onChange={(page, pageSize) => {
+            setCurrentPage(page)
+            backTopTransiton({ top: 650 })
+          }}
         />
       </div>
     </>

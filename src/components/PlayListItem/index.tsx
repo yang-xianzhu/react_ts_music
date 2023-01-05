@@ -147,7 +147,7 @@ const PlayListItem: FC = () => {
           setParams(currentParams)
           if (page !== currentPage) {
             // 返回顶部
-            backTopTransiton()
+            backTopTransiton({ top: 0 })
             setCurrentPage(page)
           }
         }}

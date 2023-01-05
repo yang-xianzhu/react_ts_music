@@ -92,9 +92,9 @@ export const transitionUrlParams = (url: string, key?: string) => {
 }
 
 // 带有动画返回顶部函数
-export const backTopTransiton = () => {
+export const backTopTransiton = ({ top = 0 }: { top: number }) => {
   window.scrollTo({
-    top: 0,
+    top,
     behavior: 'smooth'
   })
 }
