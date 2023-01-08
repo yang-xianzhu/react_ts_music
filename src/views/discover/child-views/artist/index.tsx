@@ -1,8 +1,18 @@
-const Artist = () => {
+import { FC } from 'react'
+import WithLayoutWrap from '../hooks/WithLayoutWrap'
+import FilterList from './components/FilterList'
+
+const Artist: FC = () => {
   return (
-    <>
-      <h1>歌手</h1>
-    </>
+    <WithLayoutWrap>
+      <div
+        style={{
+          display: 'flex'
+        }}
+      >
+        <FilterList />
+      </div>
+    </WithLayoutWrap>
   )
 }
 

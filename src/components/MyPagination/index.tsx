@@ -22,7 +22,7 @@ const MyPagination: FC<IPagination> = (props) => {
 
   // 部分展示页码数组
   let pageNumArr: Array<number> = []
-  const length = Math.floor(total / pageSize)
+  const length = Math.ceil(total / pageSize)
 
   // 是否只有一页
   const isOnePage = useMemo(
@@ -50,7 +50,7 @@ const MyPagination: FC<IPagination> = (props) => {
       })
       .filter((v: number) => v > 0)
 
-    const t = Math.floor(total / pageSize)
+    const t = Math.ceil(total / pageSize)
 
     if (current <= 5) {
       // 右边省略号

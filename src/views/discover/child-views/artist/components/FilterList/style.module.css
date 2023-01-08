@@ -1,0 +1,34 @@
+.filter-container {
+  padding: 50px 12px 0;
+  width: 180px;
+  background: #f9f9f8;
+}
+
+.item {
+  font-size: 12px;
+}
+
+.item .title {
+  height: 25px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: 'Microsoft Yahei';
+}
+
+.nav {
+  padding-bottom: 16px;
+  border-bottom: 1px solid #d3d3d3;
+}
+
+.nav li {
+  height: 29px;
+  line-height: 29px;
+  cursor: pointer;
+}
+
+.nav li > span {
+  display: block;
+  padding-left: 27px;
+
+  background-position: 0 0;
+}

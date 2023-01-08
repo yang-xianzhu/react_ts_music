@@ -117,6 +117,10 @@
   background: url('@/assets/images/radio_slide.png') no-repeat 0 -99999px;
 }
 
+.yxz-singer {
+  background: url('@/assets/images/singer.png') no-repeat 0 -99999px;
+}
+
 .foot-img {
   background: url('@/assets/images/foot_enter.png') no-repeat 0 -99999px;
   background-size: 220px 220px;
