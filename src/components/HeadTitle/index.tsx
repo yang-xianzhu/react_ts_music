@@ -3,10 +3,11 @@ import { memo } from 'react'
 
 interface IProps {
   title: string
-  onClick?: () => void
+  onClick?: () => {}
+  isShowAll?: boolean
 }
 const HeadTitle: FC<IProps> = (props) => {
-  const { title, onClick = () => {} } = props
+  const { title, onClick = () => {}, isShowAll = true } = props
   return (
     <>
       <div
@@ -26,23 +27,25 @@ const HeadTitle: FC<IProps> = (props) => {
         >
           {title}
         </h3>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            fontSize: '12px'
-          }}
-          onClick={onClick}
-        >
-          <em className="underline">更多</em>
-          <i
+        {isShowAll && (
+          <div
             style={{
-              margin: '-2px 0 0 3px'
+              display: 'flex',
+              alignItems: 'center',
+              fontSize: '12px'
             }}
+            onClick={onClick}
           >
-            {' >'}
-          </i>
-        </div>
+            <em className="underline">更多</em>
+            <i
+              style={{
+                margin: '-2px 0 0 3px'
+              }}
+            >
+              {' >'}
+            </i>
+          </div>
+        )}
       </div>
     </>
   )

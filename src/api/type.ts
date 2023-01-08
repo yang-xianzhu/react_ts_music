@@ -13,3 +13,10 @@ export interface IResult<T = any> {
   message: string
   data: T
 }
+
+// 全部新碟
+export interface IAllAlbum {
+  area: string
+  limit: number
+  offset: number
+}

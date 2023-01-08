@@ -1,0 +1,37 @@
+.list {
+  display: flex;
+  align-self: flex-end;
+  padding: 0 0 12px 20px;
+}
+
+.list li {
+  font-size: 12px;
+  margin-right: 10px;
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+
+.list li.active {
+  background: #a7a7a7;
+  color: #fff;
+}
+
+.list li:nth-child(n + 2) {
+  position: relative;
+  margin-left: 10px;
+}
+
+.list li:nth-child(n + 2)::before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 10px;
+  background: #c7c7c7;
+}
+
+.list li:last-child {
+  margin-right: 0;
+}

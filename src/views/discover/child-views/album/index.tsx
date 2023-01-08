@@ -1,8 +1,21 @@
-const Album = () => {
+import { FC } from 'react'
+import WithLayoutWrap from '../hooks/WithLayoutWrap'
+import NewDisc from './components/NewDisc'
+import AllDisc from './components/AllDisc'
+const Album: FC = () => {
   return (
-    <>
-      <h1>新碟上架</h1>
-    </>
+    <WithLayoutWrap>
+      <div
+        style={{
+          padding: '40px'
+        }}
+      >
+        {/* 热门新碟 */}
+        <NewDisc />
+        {/* 全部新碟 */}
+        <AllDisc />
+      </div>
+    </WithLayoutWrap>
   )
 }
 

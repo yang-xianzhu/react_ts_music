@@ -9,9 +9,8 @@ interface IProps {
   playCount: number
 }
 
-const MineDetailList: FC<IProps> = (props) => {
+const MineDetailList: FC<IProps> = ({ list = [], playCount }) => {
   // console.log(props.list)
-  const list = props?.list || []
 
   function playSong(id: number) {
     store.dispatch(fetchCurrentSongAction({ ids: id }))
@@ -22,11 +21,11 @@ const MineDetailList: FC<IProps> = (props) => {
       <header className={Style['header']}>
         <div className={Style['head-left']}>
           <h1>歌曲列表</h1>
-          <span style={{ color: '#666' }}>100首歌</span>
+          <span style={{ color: '#666' }}>{list.length}首歌</span>
         </div>
         <div>
           <span>播放:</span>
-          <strong className={`${Style['play-num']}`}>{props.playCount}</strong>
+          <strong className={`${Style['play-num']}`}>{playCount}</strong>
           <em>次</em>
         </div>
       </header>

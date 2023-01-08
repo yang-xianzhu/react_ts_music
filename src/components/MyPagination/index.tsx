@@ -1,9 +1,9 @@
-import { FC, useMemo } from 'react'
+import { FC, useMemo, useState } from 'react'
 import { memo } from 'react'
 import Style from './style.module.css'
 
 interface IPagination {
-  style: {}
+  style?: {}
   total?: number
   pageSize?: number
   current?: number
@@ -18,6 +18,7 @@ const MyPagination: FC<IPagination> = (props) => {
     onChange = () => {},
     style = {}
   } = props
+  const [currentPage, setCurrentPage] = useState<number>(1)
 
   // 部分展示页码数组
   let pageNumArr: Array<number> = []
@@ -126,7 +127,14 @@ const MyPagination: FC<IPagination> = (props) => {
               className={`yxz-button ${Style['page-num']} ${
                 current === v ? Style['seleted'] : ''
               }`}
-              onClick={() => onChange(v, pageSize)}
+              onClick={() => {
+                if (currentPage === v) {
+                  return
+                }
+
+                setCurrentPage(v)
+                onChange(v, pageSize)
+              }}
             >
               {v}
             </span>

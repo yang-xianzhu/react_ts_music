@@ -1,0 +1,61 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  width: 153px;
+  margin: 0 0 12px 33px;
+}
+
+.item:nth-child(5n + 1) {
+  margin-left: 0;
+}
+
+.cover-img {
+  position: relative;
+  width: 130px;
+  height: 130px;
+}
+
+.cover-img > img {
+  width: 100%;
+  height: 100%;
+}
+
+.mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 153px;
+  height: 130px;
+  background-position: 0 -845px;
+}
+
+.mask:hover .play {
+  display: block;
+}
+
+.play {
+  display: none;
+  position: absolute;
+  bottom: 5px;
+  right: 30px;
+  width: 28px;
+  height: 28px;
+  background-position: 0 -140px;
+  text-indent: -99999px;
+}
+
+.dec,
+.text {
+  width: 100%;
+}
+
+.dec {
+  margin: 8px 0 3px;
+}
+
+.text {
+  font-size: 12px;
+}
