@@ -3,7 +3,7 @@ import { memo } from 'react'
 
 interface IProps {
   title: string
-  onClick?: () => {}
+  onClick?: () => void
   isShowAll?: boolean
 }
 const HeadTitle: FC<IProps> = (props) => {

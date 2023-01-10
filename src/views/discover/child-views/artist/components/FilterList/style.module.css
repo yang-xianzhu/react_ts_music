@@ -1,11 +1,19 @@
 .filter-container {
-  padding: 50px 12px 0;
-  width: 180px;
+  padding: 50px 10px 0;
+  width: 182px;
   background: #f9f9f8;
 }
 
 .item {
   font-size: 12px;
+}
+
+.item:nth-child(n + 2) {
+  margin-top: 16px;
+}
+
+.item:last-child .nav {
+  border-bottom-width: 0;
 }
 
 .item .title {
@@ -26,9 +34,13 @@
   cursor: pointer;
 }
 
-.nav li > span {
+.nav li > a {
   display: block;
   padding-left: 27px;
+  background-position: 0 -30px;
+}
 
+.nav li a.active {
+  color: var(--theme-color);
   background-position: 0 0;
 }

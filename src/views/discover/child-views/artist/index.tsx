@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import WithLayoutWrap from '../hooks/WithLayoutWrap'
 import FilterList from './components/FilterList'
+import MainList from './components/MainList'
 
 const Artist: FC = () => {
   return (
@@ -11,6 +12,7 @@ const Artist: FC = () => {
         }}
       >
         <FilterList />
+        <MainList />
       </div>
     </WithLayoutWrap>
   )
