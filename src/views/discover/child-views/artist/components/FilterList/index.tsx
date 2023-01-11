@@ -1,6 +1,6 @@
-import { FC, memo, SyntheticEvent, useMemo } from 'react'
+import { FC, memo, SyntheticEvent, useEffect, useMemo } from 'react'
 import Style from './style.module.css'
-import { useLocation, Link } from 'react-router-dom'
+import { useLocation, useNavigate, Link } from 'react-router-dom'
 import type { IList } from './type'
 
 const list: IList[] = [
@@ -106,6 +106,11 @@ const list: IList[] = [
 
 const FilterList: FC = () => {
   const search = useLocation().search
+  const push = useNavigate()
+
+  useEffect(() => {
+    push('/discover/artist?type=recommend&text=推荐歌手')
+  }, [])
 
   function handleValue(val: string) {
     const idx = val.indexOf('?') + 1
