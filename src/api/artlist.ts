@@ -5,6 +5,7 @@ interface IParams {
   type: -1 | 1 | 2 | 3
   area: -1 | 7 | 96 | 8 | 16 | 0
   initial?: string | number
+  offset?: number
 }
 
 // 歌手分类列表
@@ -18,7 +19,13 @@ interface IParams {
 // area 取值:
 
 // -1:全部 7华语 96欧美 8:日本 16韩国 0:其他
-export const getArtList = ({ type, area, initial = -1, limit = 30 }: IParams) =>
+export const getArtList = ({
+  type,
+  area,
+  initial = -1,
+  limit = 30,
+  offset = 0
+}: IParams) =>
   http.get(
-    `/artist/list?type=${type}&area=${area}&initial=${initial}&limit=${limit}`
+    `/artist/list?type=${type}&area=${area}&initial=${initial}&limit=${limit}&offset=${offset}`
   )

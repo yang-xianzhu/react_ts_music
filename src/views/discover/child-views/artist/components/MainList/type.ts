@@ -29,3 +29,8 @@ export interface ISettleList {
   imgUrl: string
   songer: string
 }
+
+export interface ILetter {
+  text: string
+  value: number
+}

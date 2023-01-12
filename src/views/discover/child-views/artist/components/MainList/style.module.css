@@ -45,3 +45,27 @@
   height: 18px;
   background-position: 0 -740px;
 }
+
+/* 字母筛选列表 */
+.initial-selector {
+  display: flex;
+  margin-top: 20px;
+  font-size: 12px;
+}
+
+.initial-selector a {
+  padding: 0 7px;
+  height: 24px;
+  line-height: 24px;
+  font-weight: 700;
+}
+
+.initial-selector li.active {
+  background: #c20c0c;
+  border-radius: 2px;
+  color: #fff;
+}
+
+.initial-selector li:nth-child(n + 2) {
+  margin-left: 3px;
+}

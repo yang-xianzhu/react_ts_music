@@ -1,11 +1,121 @@
-import { FC, memo, useEffect, useMemo, useState } from 'react'
+import { FC, memo, useCallback, useEffect, useMemo, useState } from 'react'
 import { useLocation, Link } from 'react-router-dom'
 import HeadTitle from '@/components/HeadTitle'
 import { transitionSamllImg, transitionUrlParams } from '@/utils'
 import Style from './style.module.css'
 import { getArtList } from '@/api/artlist'
-import { ISgerList, ISgerProps, ISettleList, ISgerItem } from './type'
+import { ISgerList, ISgerProps, ISettleList, ISgerItem, ILetter } from './type'
 
+const letterArr: ILetter[] = [
+  {
+    text: '热门',
+    value: -1
+  },
+  {
+    text: 'A',
+    value: 65
+  },
+  {
+    text: 'B',
+    value: 66
+  },
+  {
+    text: 'C',
+    value: 67
+  },
+  {
+    text: 'D',
+    value: 68
+  },
+  {
+    text: 'F',
+    value: 69
+  },
+  {
+    text: 'G',
+    value: 70
+  },
+  {
+    text: 'H',
+    value: 71
+  },
+  {
+    text: 'I',
+    value: 72
+  },
+  {
+    text: 'J',
+    value: 73
+  },
+  {
+    text: 'K',
+    value: 74
+  },
+  {
+    text: 'L',
+    value: 75
+  },
+  {
+    text: 'M',
+    value: 76
+  },
+  {
+    text: 'N',
+    value: 77
+  },
+  {
+    text: 'O',
+    value: 78
+  },
+  {
+    text: 'P',
+    value: 79
+  },
+  {
+    text: 'Q',
+    value: 80
+  },
+  {
+    text: 'R',
+    value: 81
+  },
+  {
+    text: 'S',
+    value: 82
+  },
+  {
+    text: 'T',
+    value: 83
+  },
+  {
+    text: 'U',
+    value: 84
+  },
+  {
+    text: 'V',
+    value: 85
+  },
+  {
+    text: 'W',
+    value: 86
+  },
+  {
+    text: 'X',
+    value: 87
+  },
+  {
+    text: 'Y',
+    value: 88
+  },
+  {
+    text: 'Z',
+    value: 89
+  },
+  {
+    text: '其他',
+    value: 0
+  }
+]
 // 入驻歌手假数据
 const settleInlist: ISettleList[] = [
   {
@@ -127,6 +237,40 @@ const SgerList: FC<ISgerList> = ({ list = [] }) => {
     </div>
   )
 }
+// 字母筛选列表
+const InitialSelector: FC = memo(() => {
+  const search = useLocation().search
+  const getCurrentInfo = useCallback(() => {
+    return {
+      id: transitionUrlParams(decodeURIComponent(search), 'id'),
+      text: transitionUrlParams(decodeURIComponent(search), 'text'),
+      initial: Number(
+        transitionUrlParams(decodeURIComponent(search), 'initial') || -1
+      )
+    }
+  }, [search])
+
+  return (
+    <ul className={Style['initial-selector']}>
+      {letterArr.map((v, idx: number) => (
+        <li
+          key={idx}
+          className={`underline ${
+            getCurrentInfo().initial === v.value ? Style['active'] : ''
+          }`}
+        >
+          <Link
+            to={`/discover/artist?type=cat&id=${getCurrentInfo().id}&text=${
+              getCurrentInfo().text
+            }&initial=${v.value}`}
+          >
+            {v.text}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  )
+})
 
 const MainList: FC = () => {
   const search = useLocation().search
@@ -135,24 +279,54 @@ const MainList: FC = () => {
     [search]
   )
 
+  // 推荐歌手列表的数据
   const [list, setList] = useState([] as ISgerItem[])
-
+  // 其他歌手列表的数据
+  const [restList, setRestList] = useState([] as ISgerItem[])
+  // eff
   useEffect(() => {
-    getArtList({
-      area: -1,
-      type: -1
-    }).then((res) => {
-      setList(res?.artists)
-      //   console.log(res)
-    })
-  }, [])
+    if (currentTitle === '推荐歌手') {
+      getArtList({
+        area: -1,
+        type: -1
+      }).then((res) => {
+        // 热门歌手
+        setList(res?.artists?.slice(0, 10))
+      })
+    } else {
+      getArtList({
+        area: -1,
+        type: -1,
+        limit: 30,
+        offset: 0
+      }).then((res) => {
+        setRestList(res?.artists)
+        // console.log(res)
+      })
+    }
+  }, [currentTitle])
 
   return (
     <div style={{ flex: '1', padding: '40px', overflow: 'hidden' }}>
-      <HeadTitle title={currentTitle} isShowAll={currentTitle === '推荐歌手'} />
-      <SettleList list={settleInlist} />
-      <HeadTitle title="热门歌手" isShowAll={false} />
-      <SgerList list={list} />
+      {currentTitle === '推荐歌手' ? (
+        <>
+          <HeadTitle
+            title={currentTitle}
+            isShowAll={currentTitle === '推荐歌手'}
+          />
+          <SettleList list={settleInlist} />
+          <HeadTitle title="热门歌手" isShowAll={false} />
+          <SgerList list={list} />
+        </>
+      ) : (
+        <>
+          <HeadTitle title={currentTitle} isShowAll={false} />
+          {!['推荐歌手', '入驻歌手'].includes(currentTitle) && (
+            <InitialSelector />
+          )}
+          <SgerList list={restList} />
+        </>
+      )}
     </div>
   )
 }

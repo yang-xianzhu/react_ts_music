@@ -2,6 +2,7 @@ import { FC, memo, SyntheticEvent, useEffect, useMemo } from 'react'
 import Style from './style.module.css'
 import { useLocation, useNavigate, Link } from 'react-router-dom'
 import type { IList } from './type'
+import { transitionUrlParams } from '@/utils'
 
 const list: IList[] = [
   {
@@ -109,7 +110,12 @@ const FilterList: FC = () => {
   const push = useNavigate()
 
   useEffect(() => {
-    push('/discover/artist?type=recommend&text=推荐歌手')
+    if (
+      decodeURIComponent(transitionUrlParams(search, 'text') as string) ===
+      'undefined'
+    ) {
+      push('/discover/artist?type=recommend&text=推荐歌手')
+    }
   }, [])
 
   function handleValue(val: string) {
