@@ -2,8 +2,8 @@ import http from '.'
 
 interface IParams {
   limit?: number
-  type: -1 | 1 | 2 | 3
-  area: -1 | 7 | 96 | 8 | 16 | 0
+  type: number
+  area: number
   initial?: string | number
   offset?: number
 }

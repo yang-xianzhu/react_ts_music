@@ -6,4 +6,5 @@ export interface IList {
 interface IItem {
   text: string
   value: string
+  songerType?: string
 }

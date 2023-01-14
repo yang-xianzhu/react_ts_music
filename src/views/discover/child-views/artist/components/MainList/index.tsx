@@ -6,6 +6,7 @@ import Style from './style.module.css'
 import { getArtList } from '@/api/artlist'
 import { ISgerList, ISgerProps, ISettleList, ISgerItem, ILetter } from './type'
 
+// 字母筛选数据
 const letterArr: ILetter[] = [
   {
     text: '热门',
@@ -170,7 +171,7 @@ const settleInlist: ISettleList[] = [
   }
 ]
 
-// 入驻歌手列表
+// 入驻歌手列表组件
 const SettleList: FC<ISgerProps> = ({ list = [] }) => {
   return (
     <div
@@ -204,7 +205,7 @@ const SettleList: FC<ISgerProps> = ({ list = [] }) => {
   )
 }
 
-// 常规歌手列表
+// 常规歌手列表组件
 const SgerList: FC<ISgerList> = ({ list = [] }) => {
   return (
     <div
@@ -237,7 +238,7 @@ const SgerList: FC<ISgerList> = ({ list = [] }) => {
     </div>
   )
 }
-// 字母筛选列表
+// 字母筛选列表组件
 const InitialSelector: FC = memo(() => {
   const search = useLocation().search
   const getCurrentInfo = useCallback(() => {
@@ -246,6 +247,12 @@ const InitialSelector: FC = memo(() => {
       text: transitionUrlParams(decodeURIComponent(search), 'text'),
       initial: Number(
         transitionUrlParams(decodeURIComponent(search), 'initial') || -1
+      ),
+      area: Number(
+        transitionUrlParams(decodeURIComponent(search), 'area') || -1
+      ),
+      songerType: Number(
+        transitionUrlParams(decodeURIComponent(search), 'songerType') || -1
       )
     }
   }, [search])
@@ -262,10 +269,32 @@ const InitialSelector: FC = memo(() => {
           <Link
             to={`/discover/artist?type=cat&id=${getCurrentInfo().id}&text=${
               getCurrentInfo().text
-            }&initial=${v.value}`}
+            }&initial=${v.value}&area=${getCurrentInfo().area}&songerType=${
+              getCurrentInfo().songerType
+            }`}
           >
             {v.text}
           </Link>
+        </li>
+      ))}
+    </ul>
+  )
+})
+
+// 歌手文字列表组件
+const SongerTextList: FC<ISgerList> = memo(({ list }) => {
+  return (
+    <ul className={Style['text-list']}>
+      {list.map((v, idx: number) => (
+        <li key={idx}>
+          <Link
+            className="underline f-thide"
+            to={'/'}
+            title={`${v.name}的音乐`}
+          >
+            {v.name}
+          </Link>
+          <i className="yxz-icon" title={`${v.name}的个人主页`}></i>
         </li>
       ))}
     </ul>
@@ -279,12 +308,23 @@ const MainList: FC = () => {
     [search]
   )
 
+  // 处理请求参数
+  const handleParams = useCallback(
+    (path: string, type: string) => {
+      return Number((transitionUrlParams(path, type) as string) || -1)
+    },
+    [search]
+  )
+
   // 推荐歌手列表的数据
   const [list, setList] = useState([] as ISgerItem[])
   // 其他歌手列表的数据
   const [restList, setRestList] = useState([] as ISgerItem[])
   // eff
   useEffect(() => {
+    // 此处因重复跳转路由，导致首次会eff两次，懒得改了
+    // console.log('eff')
+
     if (currentTitle === '推荐歌手') {
       getArtList({
         area: -1,
@@ -295,16 +335,17 @@ const MainList: FC = () => {
       })
     } else {
       getArtList({
-        area: -1,
-        type: -1,
+        area: handleParams(search, 'area'),
+        type: handleParams(search, 'songerType'),
         limit: 30,
-        offset: 0
+        offset: 0,
+        initial: handleParams(search, 'initial')
       }).then((res) => {
         setRestList(res?.artists)
         // console.log(res)
       })
     }
-  }, [currentTitle])
+  }, [search])
 
   return (
     <div style={{ flex: '1', padding: '40px', overflow: 'hidden' }}>
@@ -317,6 +358,7 @@ const MainList: FC = () => {
           <SettleList list={settleInlist} />
           <HeadTitle title="热门歌手" isShowAll={false} />
           <SgerList list={list} />
+          <SongerTextList list={restList} />
         </>
       ) : (
         <>
@@ -325,6 +367,7 @@ const MainList: FC = () => {
             <InitialSelector />
           )}
           <SgerList list={restList} />
+          <SongerTextList list={restList} />
         </>
       )}
     </div>
